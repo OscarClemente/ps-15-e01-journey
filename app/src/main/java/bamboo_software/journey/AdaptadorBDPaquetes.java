@@ -13,9 +13,11 @@ import android.util.Log;
  */
 public class AdaptadorBDPaquetes {
 
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_BODY = "body";
-    public static final String KEY_CAT = "cat";
+    public static final String KEY_NOMBRE = "nombre";
+    public static final String KEY_PRECIO = "precio";
+    public static final String KEY_DURACION = "duracion";
+    public static final String KEY_CALIFICACION = "calificacion";
+    public static final String KEY_DESCRIPCION = "descripcion";
     public static final String KEY_ROWID = "_id";
 
     private static final String TAG = "AdaptadorBDPaquetes";
@@ -27,16 +29,25 @@ public class AdaptadorBDPaquetes {
      */
     private static final String DATABASE_CREATE =
             "create table paquete (_id integer primary key autoincrement, "
-                    + "name text not null);";
+                    + "nombre text not null, precio integer not null,"
+                    + "duracion integer not null, calificacion integer"
+                    + "descripcion text not null);";
 
     private static final String DATABASE_CREATE2 =
-            "create table notes (_id integer primary key autoincrement, "
-                    + "title text not null, body text not null, cat integer, "
-                    + "foreign key(cat) references categories(_id));";
+            "create table comprar (_id integer not null, "
+                    + "correo text not null, fecha text not null,"
+                    + "FOREIGN KEY(_id) REFERENCES paquete(_id),"
+                    + "FOREIGN KEY(trackartist) REFERENCES usuario(correo),"
+                    + "PRIMARY KEY(_id, correo));";
 
-    private static final String DATABASE_NAME = "data";
-    private static final String DATABASE_TABLE = "notes";
-    private static final int DATABASE_VERSION = 9;
+    private static final String DATABASE_CREATE3 =
+            "create table usuario (correo text primary key not null, "
+                    + "nick text not null, pass text not null, telefono integer); ";
+
+
+    private static final String DATABASE_NAME = "journey";
+    private static final String DATABASE_TABLE = "paquete";
+    private static final int DATABASE_VERSION = 1;
 
     private final Context mCtx;
 
@@ -50,6 +61,7 @@ public class AdaptadorBDPaquetes {
         public void onCreate(SQLiteDatabase db) {
 
             db.execSQL(DATABASE_CREATE);
+            db.execSQL(DATABASE_CREATE3);
             db.execSQL(DATABASE_CREATE2);
 
         }
@@ -70,7 +82,7 @@ public class AdaptadorBDPaquetes {
      *
      * @param ctx the Context within which to work
      */
-    public NotesDbAdapter(Context ctx) {
+    public AdaptadorBDPaquetes(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -80,10 +92,10 @@ public class AdaptadorBDPaquetes {
      * signal the failure
      *
      * @return this (self reference, allowing this to be chained in an
-     *         initialization call)
+     * initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public NotesDbAdapter open() throws SQLException {
+    public AdaptadorBDPaquetes open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;
@@ -95,43 +107,47 @@ public class AdaptadorBDPaquetes {
 
 
     /**
-     * Create a new note using the title and body provided. If the note is
-     * successfully created return the new rowId for that note, otherwise return
-     * a -1 to indicate failure.
+     * Crea un nuevo paquete usando el nombre, precio, duración, calificación, descripción
+     * proporcionados. Si el paquete se crea con exito devuelve la rowId de ese paquete,
+     * de otra manera se devuelve -1 para indicar un fallo.
      *
-     * @param title the title of the note
-     * @param body the body of the note
-     * @return rowId or -1 if failed
+     * @param nombre       el nombre del paquete
+     * @param precio       el precio del paquete
+     * @param duracion     la duracion del paquete
+     * @param calificacion la calificacion del paquete
+     * @param descripcion  la descripcion del paquete
+     * @return rowId o -1 si falla
      */
-    public long createNote(String title, long catId, String body) {
+    public long crearPaquete(String nombre, int precio, int duracion, int calificacion,
+                             String descripcion) {
         try {
-            if (title=="") {
+            if (nombre == "") {
                 return -1;
             }
 
-            ContentValues initialValues = new ContentValues();
-            initialValues.put(KEY_TITLE, title);
-            initialValues.put(KEY_CAT, catId);
-            initialValues.put(KEY_BODY, body);
+            ContentValues valoresIniciales = new ContentValues();
+            valoresIniciales.put(KEY_NOMBRE, nombre);
+            valoresIniciales.put(KEY_PRECIO, precio);
+            valoresIniciales.put(KEY_DURACION, duracion);
+            valoresIniciales.put(KEY_CALIFICACION, calificacion);
+            valoresIniciales.put(KEY_DESCRIPCION, descripcion);
 
-            return mDb.insert(DATABASE_TABLE, null, initialValues);
-        }
-        catch(Throwable e) {
+            return mDb.insert(DATABASE_TABLE, null, valoresIniciales);
+        } catch (Throwable e) {
             return -1;
         }
     }
 
     /**
-     * Delete the note with the given rowId
+     * Borrar el paquete de la id dada
      *
-     * @param rowId id of note to delete
-     * @return true if deleted, false otherwise
+     * @param rowId id del paquete
+     * @return true si se ha borrado, false de otra manera
      */
-    public boolean deleteNote(long rowId) {
-        try{
+    public boolean borrarPaquete(long rowId) {
+        try {
             return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
-        }
-        catch(Throwable e) {
+        } catch (Throwable e) {
             return false;
         }
     }
@@ -141,35 +157,12 @@ public class AdaptadorBDPaquetes {
      *
      * @return Cursor over all notes
      */
-    public Cursor fetchAllNotes() {
+    public Cursor listarPaquetes() {
 
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_CAT, KEY_BODY}, null, null, null, null, KEY_TITLE);
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE,
+                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                null, null, null, null, KEY_NOMBRE);
     }
-
-    /**
-     * Return a Cursor over the list of all notes in the database
-     *
-     * @return Cursor over all notes
-     */
-    public Cursor fetchAllNotesCat() {
-
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_CAT, KEY_BODY}, null, null, null, null, KEY_CAT);
-    }
-
-    /**
-     * Return a Cursor over the list of all notes in the database
-     *
-     * @return Cursor over all notes
-     */
-    public Cursor fetchAllNotesOneCat(int cat) {
-
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_CAT, KEY_BODY}, KEY_CAT+"="+cat, null, null, null, KEY_CAT);
-    }
-
-
 
     /**
      * Return a Cursor positioned at the note that matches the given rowId
@@ -178,13 +171,13 @@ public class AdaptadorBDPaquetes {
      * @return Cursor positioned to matching note, if found
      * @throws SQLException if note could not be found/retrieved
      */
-    public Cursor fetchNote(long rowId) throws SQLException {
+    public Cursor listarPaquete(long rowId) throws SQLException {
 
         Cursor mCursor =
 
-                mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_TITLE, KEY_CAT, KEY_BODY}, KEY_ROWID + "=" + rowId, null,
-                        null, null, null, null);
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE,
+                                KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                        KEY_ROWID + "=" + rowId, null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -197,25 +190,29 @@ public class AdaptadorBDPaquetes {
      * specified using the rowId, and it is altered to use the title and body
      * values passed in
      *
-     * @param rowId id of note to update
-     * @param title value to set note title to
-     * @param body value to set note body to
-     * @return true if the note was successfully updated, false otherwise
+     * @param nombre       el nombre del paquete
+     * @param precio       el precio del paquete
+     * @param duracion     la duracion del paquete
+     * @param calificacion la calificacion del paquete
+     * @param descripcion  la descripcion del paquete
+     * @return rowId o -1 si falla
      */
-    public boolean updateNote(long rowId, String title, long catId, String body) {
-        try{
-            if (title=="") {
+    public boolean actualizarPaquete(long rowId, String nombre, int precio, int duracion, int calificacion,
+                                     String descripcion) {
+        try {
+            if (nombre == "") {
                 return false;
             }
 
             ContentValues args = new ContentValues();
-            args.put(KEY_TITLE, title);
-            args.put(KEY_CAT, catId);
-            args.put(KEY_BODY, body);
+            args.put(KEY_NOMBRE, nombre);
+            args.put(KEY_PRECIO, precio);
+            args.put(KEY_DURACION, duracion);
+            args.put(KEY_CALIFICACION, calificacion);
+            args.put(KEY_DESCRIPCION, descripcion);
 
             return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
-        }
-        catch(Throwable e) {
+        } catch (Throwable e) {
             return false;
         }
     }
