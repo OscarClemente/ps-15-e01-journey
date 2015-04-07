@@ -5,13 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
 
 /**
  *
  */
-public class AdaptadorBDPaquetes {
+public class AdaptadorPaquetes {
 
     public static final String KEY_NOMBRE = "nombre";
     public static final String KEY_PRECIO = "precio";
@@ -20,82 +19,36 @@ public class AdaptadorBDPaquetes {
     public static final String KEY_DESCRIPCION = "descripcion";
     public static final String KEY_ROWID = "_id";
 
-    private static final String TAG = "AdaptadorBDPaquetes";
+
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
 
-    /**
-     * Database creation sql statement
-     */
-    private static final String DATABASE_CREATE =
-            "create table paquete (_id integer primary key autoincrement, "
-                    + "nombre text not null, precio integer not null,"
-                    + "duracion integer not null, calificacion integer"
-                    + "descripcion text not null);";
-
-    private static final String DATABASE_CREATE2 =
-            "create table comprar (_id integer not null, "
-                    + "correo text not null, fecha text not null,"
-                    + "FOREIGN KEY(_id) REFERENCES paquete(_id),"
-                    + "FOREIGN KEY(trackartist) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(_id, correo));";
-
-    private static final String DATABASE_CREATE3 =
-            "create table usuario (correo text primary key not null, "
-                    + "nick text not null, pass text not null, telefono integer); ";
 
 
-    private static final String DATABASE_NAME = "journey";
+
     private static final String DATABASE_TABLE = "paquete";
-    private static final int DATABASE_VERSION = 1;
+
 
     private final Context mCtx;
 
-    public static class DatabaseHelper extends SQLiteOpenHelper {
-
-        DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-
-            db.execSQL(DATABASE_CREATE);
-            db.execSQL(DATABASE_CREATE3);
-            db.execSQL(DATABASE_CREATE2);
-
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS notes");
-            db.execSQL("DROP TABLE IF EXISTS categories");
-            onCreate(db);
-        }
-    }
 
     /**
-     * Constructor - takes the context to allow the database to be
-     * opened/created
+     * Constructor
      *
-     * @param ctx the Context within which to work
+     * @param ctx el contexto con el que trabajar
      */
-    public AdaptadorBDPaquetes(Context ctx) {
+    public AdaptadorPaquetes(Context ctx) {
         this.mCtx = ctx;
     }
 
     /**
-     * Open the notes database. If it cannot be opened, try to create a new
-     * instance of the database. If it cannot be created, throw an exception to
-     * signal the failure
+     * Abre la base de datos. Si no la puede abrir, intenta crear una nueva instancia de la base de datos.
+     * Si no la puede crear lanza una excepcion de fallo.
      *
-     * @return this (self reference, allowing this to be chained in an
-     * initialization call)
-     * @throws SQLException if the database could be neither opened or created
+     * @return this auto referencia
+     * @throws SQLException si la base de datos no puede ser ni creada ni abierta
      */
-    public AdaptadorBDPaquetes open() throws SQLException {
+    public AdaptadorPaquetes open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;
@@ -121,7 +74,7 @@ public class AdaptadorBDPaquetes {
     public long crearPaquete(String nombre, int precio, int duracion, int calificacion,
                              String descripcion) {
         try {
-            if (nombre == "") {
+            if (nombre.equals("")) {
                 return -1;
             }
 
@@ -153,9 +106,9 @@ public class AdaptadorBDPaquetes {
     }
 
     /**
-     * Return a Cursor over the list of all notes in the database
+     * Devuelve un Cursor sobre la lista de todos los paquetes de la base de datos
      *
-     * @return Cursor over all notes
+     * @return Cursor sobre todos los paquetes
      */
     public Cursor listarPaquetes() {
 
@@ -165,11 +118,11 @@ public class AdaptadorBDPaquetes {
     }
 
     /**
-     * Return a Cursor positioned at the note that matches the given rowId
+     * Devuelve un Cursor colocado en el paquete que coincide con la rowId dada
      *
-     * @param rowId id of note to retrieve
-     * @return Cursor positioned to matching note, if found
-     * @throws SQLException if note could not be found/retrieved
+     * @param rowId id del paquete a recuperar
+     * @return Cursor colocado en el paquete deseado si esta
+     * @throws SQLException si no se puede encontrar
      */
     public Cursor listarPaquete(long rowId) throws SQLException {
 
@@ -186,9 +139,8 @@ public class AdaptadorBDPaquetes {
     }
 
     /**
-     * Update the note using the details provided. The note to be updated is
-     * specified using the rowId, and it is altered to use the title and body
-     * values passed in
+     * Actualiza el paquete con los detalles proporcionados.
+     * El paquete a actualizar se especifica mediante la rowId
      *
      * @param nombre       el nombre del paquete
      * @param precio       el precio del paquete
@@ -200,7 +152,7 @@ public class AdaptadorBDPaquetes {
     public boolean actualizarPaquete(long rowId, String nombre, int precio, int duracion, int calificacion,
                                      String descripcion) {
         try {
-            if (nombre == "") {
+            if (nombre.equals("")) {
                 return false;
             }
 
