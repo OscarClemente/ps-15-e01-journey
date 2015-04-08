@@ -15,23 +15,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE =
             "create table paquete (_id integer primary key autoincrement, "
                     + "nombre text not null, precio integer not null,"
-                    + "duracion integer not null, calificacion integer"
+                    + "duracion integer not null, calificacion integer,"
                     + "descripcion text not null);";
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (id integer not null, "
                     + "correo text not null, fecha text not null,"
-                    + "FOREIGN KEY(_id) REFERENCES paquete(_id),"
-                    + "FOREIGN KEY(trackartist) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(_id, correo));";
+                    + "FOREIGN KEY(id) REFERENCES paquete(_id),"
+                    + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
+                    + "PRIMARY KEY(id, correo));";
 
     private static final String DATABASE_CREATE3 =
             "create table usuario (correo text primary key not null, "
                     + "nick text not null, pass text not null, telefono integer); ";
 
     private static final String TAG = "AdaptadorBD";
-    private static final String DATABASE_NAME = "journey";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "journey2";
+    private static final int DATABASE_VERSION = 4;
 
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

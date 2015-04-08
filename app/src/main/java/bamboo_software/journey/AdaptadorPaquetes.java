@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -167,5 +169,30 @@ public class AdaptadorPaquetes {
         } catch (Throwable e) {
             return false;
         }
+    }
+
+
+    /*
+     * Devuelve un ArrayList de Paquete por cada elemento que hay
+     * en el cursor dado.
+     *
+     * @param cur  Cursor de una consulta
+     * @return ArrayList
+     */
+    public ArrayList<Paquete> cursorAArray(Cursor cur) {
+        ArrayList<Paquete> mArrayList = new ArrayList<>();
+        for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
+            // The Cursor is now set to the right position
+            mArrayList.add(new Paquete(
+                            cur.getLong(cur.getColumnIndex(KEY_ROWID)),
+                            cur.getString(cur.getColumnIndex(KEY_NOMBRE)),
+                            cur.getInt(cur.getColumnIndex(KEY_PRECIO)),
+                            cur.getInt(cur.getColumnIndex(KEY_DURACION)),
+                            cur.getInt(cur.getColumnIndex(KEY_CALIFICACION)),
+                            cur.getString(cur.getColumnIndex(KEY_DESCRIPCION))
+                    )
+            );
+        }
+        return mArrayList;
     }
 }
