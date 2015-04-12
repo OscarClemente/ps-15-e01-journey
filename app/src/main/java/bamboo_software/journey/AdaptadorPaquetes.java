@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class AdaptadorPaquetes {
 
     public static final String KEY_NOMBRE = "nombre";
+    public static final String KEY_DESTINO = "destino";
     public static final String KEY_PRECIO = "precio";
     public static final String KEY_DURACION = "duracion";
     public static final String KEY_CALIFICACION = "calificacion";
@@ -73,8 +74,8 @@ public class AdaptadorPaquetes {
      * @param descripcion  la descripcion del paquete
      * @return rowId o -1 si falla
      */
-    public long crearPaquete(String nombre, int precio, int duracion, int calificacion,
-                             String descripcion) {
+    public long crearPaquete(String nombre, String destino, int precio, int duracion,
+                             int calificacion, String descripcion) {
         try {
             if (nombre.equals("")) {
                 return -1;
@@ -82,6 +83,7 @@ public class AdaptadorPaquetes {
 
             ContentValues valoresIniciales = new ContentValues();
             valoresIniciales.put(KEY_NOMBRE, nombre);
+            valoresIniciales.put(KEY_DESTINO, destino);
             valoresIniciales.put(KEY_PRECIO, precio);
             valoresIniciales.put(KEY_DURACION, duracion);
             valoresIniciales.put(KEY_CALIFICACION, calificacion);
@@ -114,7 +116,7 @@ public class AdaptadorPaquetes {
      */
     public Cursor listarPaquetes() {
 
-        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE,
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
                         KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
                 null, null, null, null, KEY_NOMBRE);
     }
@@ -130,7 +132,7 @@ public class AdaptadorPaquetes {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE,
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_NOMBRE,
                                 KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
                         KEY_ROWID + "=" + rowId, null, null, null, null, null);
         if (mCursor != null) {
@@ -151,7 +153,7 @@ public class AdaptadorPaquetes {
      * @param descripcion  la descripcion del paquete
      * @return rowId o -1 si falla
      */
-    public boolean actualizarPaquete(long rowId, String nombre, int precio, int duracion, int calificacion,
+    public boolean actualizarPaquete(long rowId, String nombre, String destino, int precio, int duracion, int calificacion,
                                      String descripcion) {
         try {
             if (nombre.equals("")) {
@@ -160,6 +162,7 @@ public class AdaptadorPaquetes {
 
             ContentValues args = new ContentValues();
             args.put(KEY_NOMBRE, nombre);
+            args.put(KEY_DESTINO, destino);
             args.put(KEY_PRECIO, precio);
             args.put(KEY_DURACION, duracion);
             args.put(KEY_CALIFICACION, calificacion);
@@ -186,6 +189,7 @@ public class AdaptadorPaquetes {
             mArrayList.add(new Paquete(
                             cur.getLong(cur.getColumnIndex(KEY_ROWID)),
                             cur.getString(cur.getColumnIndex(KEY_NOMBRE)),
+                            cur.getString(cur.getColumnIndex(KEY_DESTINO)),
                             cur.getInt(cur.getColumnIndex(KEY_PRECIO)),
                             cur.getInt(cur.getColumnIndex(KEY_DURACION)),
                             cur.getInt(cur.getColumnIndex(KEY_CALIFICACION)),
