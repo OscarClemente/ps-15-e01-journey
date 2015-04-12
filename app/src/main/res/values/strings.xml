@@ -6,4 +6,5 @@
     <string name="sample_text_header">Sample card header</string>
     <string name="sample_text_footer">Sample card footer</string>
     <string name="sample_text_image">Sample image</string>
+    <string name="paquete">Paquete</string>
 </resources>
