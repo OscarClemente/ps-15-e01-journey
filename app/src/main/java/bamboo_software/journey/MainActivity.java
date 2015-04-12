@@ -1,6 +1,7 @@
 package bamboo_software.journey;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -49,6 +50,16 @@ public class MainActivity extends ActionBarActivity {
 
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
+        //PRUEBA
+        AdaptadorPaquetes db = new AdaptadorPaquetes(this);
+        db.open();
+        //long id4 = db.crearPaquete("islas malvinas", 1000, 10, 5, "mu bonitooooo");
+        //long id2 = db.crearPaquete("islas CANARIAS", 1000, 10, 5, "muCHISMO bonitooooo");
+        //long id3 = db.crearPaquete("egipto enigmatico", 1000, 10, 3, "mu bonitooooo");
+        Intent i = new Intent(this, PaqueteActivity.class);
+        long id = 6;
+        i.putExtra(AdaptadorPaquetes.KEY_ROWID,id);
+        startActivityForResult(i, 1);
     }
 
 

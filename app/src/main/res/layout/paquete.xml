@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:id="@+id/vista_foto_paquete"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/sample_text_image"
+        android:layout_gravity="top"
+        android:src="@drawable/android"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal"
+        android:fillViewport="false" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:minHeight="50dp"
+            android:id="@+id/melon">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/journeyred"
+                android:minHeight="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:id="@+id/texto_nombre" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="175dp"
+                android:layout_height="57dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/texto_duracion" />
+
+            <TextView
+                android:layout_width="175dp"
+                android:layout_height="57dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/texto_descripcion" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nota"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="175sp"
+                android:layout_height="57dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/texto_precio" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/comprar"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
