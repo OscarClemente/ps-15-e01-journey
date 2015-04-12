@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Journey</string>
+    <string name="app_name">journey</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="sample_text_header">Sample card header</string>
+    <string name="sample_text_footer">Sample card footer</string>
+    <string name="sample_text_image">Sample image</string>
 </resources>
