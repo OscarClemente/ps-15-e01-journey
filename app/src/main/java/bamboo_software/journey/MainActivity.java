@@ -20,6 +20,11 @@ public class MainActivity extends ActionBarActivity {
     private static ArrayList<CardData> cards;
     static View.OnClickListener myOnClickListener;
 
+    protected static final String SEARCH_DESTINO = "DESTINO";
+    protected static final String SEARCH_DURACION = "DURACION";
+    protected static final String SEARCH_PRECIO = "PRECIO";
+    protected static final String SEARCH_VALORACION = "VALORACION";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
