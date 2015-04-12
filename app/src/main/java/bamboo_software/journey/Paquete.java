@@ -7,23 +7,30 @@ public class Paquete {
 
     private long id;
     private String nombre;
+    private String destino;
     private int precio;
     private int duracion;
     private int calificacion;
     private String descripcion;
 
-    public Paquete(long id, String nombre, int precio, int duracion, int calificacion, String descripcion){
+
+    public Paquete(long id, String nombre, String destino, int precio, int duracion, int calificacion, String descripcion) {
         this.id = id;
         this.nombre = nombre;
+        this.destino = destino;
         this.precio = precio;
         this.duracion = duracion;
         this.calificacion = calificacion;
         this.descripcion = descripcion;
-      }
+    }
 
     public long getId() {
         return id;
     }
+
+    public String getDestino() { return destino; }
+
+    public void setDestino(String destino) { this.destino = destino; }
 
     public void setId(long id) {
         this.id = id;

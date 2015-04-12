@@ -14,7 +14,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     private static final String DATABASE_CREATE =
             "create table paquete (_id integer primary key autoincrement, "
-                    + "nombre text not null, precio integer not null,"
+                    + "nombre text not null, destino text not null,"
+                    + "precio integer not null,"
                     + "duracion integer not null, calificacion integer,"
                     + "descripcion text not null);";
 
