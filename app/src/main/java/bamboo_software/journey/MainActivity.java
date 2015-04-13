@@ -2,6 +2,7 @@ package bamboo_software.journey;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -20,11 +21,14 @@ public class MainActivity extends ActionBarActivity {
     private static RecyclerView recyclerView;
     private static ArrayList<CardData> cards;
     static View.OnClickListener myOnClickListener;
+    private AdaptadorPaquetes adPaquetes;
 
     protected static final String SEARCH_DESTINO = "DESTINO";
     protected static final String SEARCH_DURACION = "DURACION";
     protected static final String SEARCH_PRECIO = "PRECIO";
     protected static final String SEARCH_VALORACION = "VALORACION";
+
+    private static final int SEARCH_ACTIVITY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +94,22 @@ public class MainActivity extends ActionBarActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SEARCH_ACTIVITY && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            String destino = (String) extras.get(SEARCH_DESTINO);
+            int duracion = (int) extras.get(SEARCH_DURACION);
+            float precio = (float) extras.get(SEARCH_PRECIO);
+            float valoracion = (float) extras.get(SEARCH_VALORACION);
+            listarPaquetes(destino, duracion, precio, valoracion);
+        }
+    }
+
+    private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
+        Cursor paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
+        /* FALTA MOSTRAR PAQUETES */
     }
 
 }

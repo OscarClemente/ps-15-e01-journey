@@ -122,6 +122,32 @@ public class AdaptadorPaquetes {
     }
 
     /**
+     * Devuelve un Cursor sobre la lista de todos los paquetes de la base de datos
+     *
+     * @return Cursor sobre todos los paquetes
+     */
+    public Cursor listarPaquetes(String destino, int duracion, float precio, float valoracion) {
+        String where = "";
+        if (destino != null) {
+            where += KEY_DESTINO + "=" + destino + " and ";
+        }
+        if (duracion != 0) {
+            where += KEY_DURACION + "=" + duracion + " and ";
+        }
+        if (precio != 0) {
+            where += KEY_PRECIO + "<=" + precio + " and ";
+        }
+        if (valoracion != 0) {
+            where += KEY_CALIFICACION + ">=" + duracion + " and ";
+        }
+        where = where.substring(0, where.length()-5);   //Elimina el ultimo and
+
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
+                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                where, null, null, null, KEY_NOMBRE);
+    }
+
+    /**
      * Devuelve un Cursor colocado en el paquete que coincide con la rowId dada
      *
      * @param rowId id del paquete a recuperar
