@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
 
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
-
+/*
         //PRUEBA
         AdaptadorPaquetes db = new AdaptadorPaquetes(this);
         db.open();
@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
         long id = 2;
         i.putExtra(AdaptadorPaquetes.KEY_ROWID,id);
         startActivityForResult(i, 1);
-
+*/
     }
 
 
