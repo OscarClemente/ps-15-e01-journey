@@ -24,7 +24,8 @@
             android:scaleType="centerCrop"
             android:contentDescription="@string/sample_text_image"
             android:layout_gravity="top"
-            android:src="@drawable/android"/>
+            android:src="@drawable/android"
+            android:adjustViewBounds="false" />
 
         <TextView
             android:id="@+id/textViewName"

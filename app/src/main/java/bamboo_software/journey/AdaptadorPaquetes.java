@@ -20,6 +20,7 @@ public class AdaptadorPaquetes {
     public static final String KEY_DURACION = "duracion";
     public static final String KEY_CALIFICACION = "calificacion";
     public static final String KEY_DESCRIPCION = "descripcion";
+    public static final String KEY_IMAGEN = "imagen";
     public static final String KEY_ROWID = "_id";
 
 
@@ -75,7 +76,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public long crearPaquete(String nombre, String destino, int precio, int duracion,
-                             int calificacion, String descripcion) {
+                             int calificacion, String descripcion, String imagen) {
         try {
             if (nombre.equals("")) {
                 return -1;
@@ -88,6 +89,7 @@ public class AdaptadorPaquetes {
             valoresIniciales.put(KEY_DURACION, duracion);
             valoresIniciales.put(KEY_CALIFICACION, calificacion);
             valoresIniciales.put(KEY_DESCRIPCION, descripcion);
+            valoresIniciales.put(KEY_IMAGEN, imagen);
 
             return mDb.insert(DATABASE_TABLE, null, valoresIniciales);
         } catch (Throwable e) {
@@ -117,7 +119,7 @@ public class AdaptadorPaquetes {
     public Cursor listarPaquetes() {
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
-                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION, KEY_IMAGEN},
                 null, null, null, null, KEY_NOMBRE);
     }
 
@@ -159,7 +161,8 @@ public class AdaptadorPaquetes {
         Cursor mCursor =
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_NOMBRE,
-                                KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                                KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION,
+                                KEY_DESCRIPCION, KEY_IMAGEN},
                         KEY_ROWID + "=" + rowId, null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -180,7 +183,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public boolean actualizarPaquete(long rowId, String nombre, String destino, int precio, int duracion, int calificacion,
-                                     String descripcion) {
+                                     String descripcion, String imagen) {
         try {
             if (nombre.equals("")) {
                 return false;
@@ -193,6 +196,7 @@ public class AdaptadorPaquetes {
             args.put(KEY_DURACION, duracion);
             args.put(KEY_CALIFICACION, calificacion);
             args.put(KEY_DESCRIPCION, descripcion);
+            args.put(KEY_IMAGEN, imagen);
 
             return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
         } catch (Throwable e) {
@@ -219,7 +223,8 @@ public class AdaptadorPaquetes {
                             cur.getInt(cur.getColumnIndex(KEY_PRECIO)),
                             cur.getInt(cur.getColumnIndex(KEY_DURACION)),
                             cur.getInt(cur.getColumnIndex(KEY_CALIFICACION)),
-                            cur.getString(cur.getColumnIndex(KEY_DESCRIPCION))
+                            cur.getString(cur.getColumnIndex(KEY_DESCRIPCION)),
+                            cur.getString(cur.getColumnIndex(KEY_IMAGEN))
                     )
             );
         }
