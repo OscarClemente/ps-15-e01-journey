@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class PaqueteActivity extends Activity {
+public class PaqueteActivity extends ActionBarActivity {
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;

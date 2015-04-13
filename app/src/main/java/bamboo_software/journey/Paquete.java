@@ -12,9 +12,11 @@ public class Paquete {
     private int duracion;
     private int calificacion;
     private String descripcion;
+    private String imagen;
 
 
-    public Paquete(long id, String nombre, String destino, int precio, int duracion, int calificacion, String descripcion) {
+    public Paquete(long id, String nombre, String destino, int precio, int duracion,
+                   int calificacion, String descripcion, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.destino = destino;
@@ -22,6 +24,7 @@ public class Paquete {
         this.duracion = duracion;
         this.calificacion = calificacion;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
     public long getId() {
@@ -74,5 +77,13 @@ public class Paquete {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

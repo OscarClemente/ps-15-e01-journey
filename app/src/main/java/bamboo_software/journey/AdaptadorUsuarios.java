@@ -15,7 +15,8 @@ public class AdaptadorUsuarios {
     public static final String KEY_NICK = "nick";
     public static final String KEY_PASS = "pass";
     public static final String KEY_TELEFONO = "telefono";
-    public static final String KEY_ROWID = "_id";
+    public static final String KEY_NOMBRE = "nombre";
+    public static final String KEY_DIRECCION = "direccion";
 
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
@@ -64,7 +65,8 @@ public class AdaptadorUsuarios {
      * @param telefono el telefono del usuario
      * @return rowId o -1 si falla
      */
-    public long crearUsuario(String correo, String nick, String pass, int telefono) {
+    public long crearUsuario(String correo, String nick, String nombre, String direccion,
+                             String pass, int telefono) {
         try {
             if (correo.equals("")) {
                 return -1;
@@ -73,6 +75,8 @@ public class AdaptadorUsuarios {
             ContentValues valoresIniciales = new ContentValues();
             valoresIniciales.put(KEY_CORREO, correo);
             valoresIniciales.put(KEY_NICK, nick);
+            valoresIniciales.put(KEY_NOMBRE, nombre);
+            valoresIniciales.put(KEY_DIRECCION, direccion);
             valoresIniciales.put(KEY_PASS, pass);
             valoresIniciales.put(KEY_TELEFONO, telefono);
 
@@ -103,7 +107,7 @@ public class AdaptadorUsuarios {
      */
     public Cursor listarUsuarios() {
 
-        return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO,
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE, KEY_DIRECCION,
                         KEY_NICK, KEY_PASS, KEY_TELEFONO},
                         null, null, null, null, KEY_NICK);
     }
@@ -119,8 +123,8 @@ public class AdaptadorUsuarios {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_CORREO,
-                        KEY_NICK, KEY_PASS, KEY_TELEFONO},
+                mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE,
+                                KEY_DIRECCION, KEY_NICK, KEY_PASS, KEY_TELEFONO},
                         KEY_CORREO + "=" + correo, null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -139,7 +143,7 @@ public class AdaptadorUsuarios {
      * @param telefono la telefono del usuario
      * @return rowId o -1 si falla
      */
-    public boolean actualizarUsuario(String correo, String nick,
+    public boolean actualizarUsuario(String correo, String nick, String nombre, String direccion,
                                      String pass, int telefono) {
         try {
             if (correo.equals("")) {
@@ -149,6 +153,8 @@ public class AdaptadorUsuarios {
             ContentValues args = new ContentValues();
             args.put(KEY_CORREO, correo);
             args.put(KEY_NICK, nick);
+            args.put(KEY_NOMBRE, nombre);
+            args.put(KEY_DIRECCION, direccion);
             args.put(KEY_PASS, pass);
             args.put(KEY_TELEFONO, telefono);
 

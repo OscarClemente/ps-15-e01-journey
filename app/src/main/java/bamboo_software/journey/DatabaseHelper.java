@@ -16,19 +16,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table paquete (_id integer primary key autoincrement, "
                     + "nombre text not null, destino text not null,"
                     + "precio integer not null,"
-                    + "duracion integer not null, calificacion integer,"
-                    + "descripcion text not null);";
+                    + "duracion integer not null, calificacion integer not null,"
+                    + "descripcion text not null, imagen text not null);";
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (id integer not null, "
                     + "correo text not null, fecha text not null,"
                     + "FOREIGN KEY(id) REFERENCES paquete(_id),"
                     + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(id, correo));";
+                    + "PRIMARY KEY(id, correo)) WITHOUT ROWID;";
 
     private static final String DATABASE_CREATE3 =
             "create table usuario (correo text primary key not null, "
-                    + "nick text not null, pass text not null, telefono integer); ";
+                    + "nick text not null, nombre text not null, direccion text not null,"
+                    + "pass text not null, telefono integer) WITHOUT ROWID; ";
 
     private static final String TAG = "AdaptadorBD";
     private static final String DATABASE_NAME = "journey";
