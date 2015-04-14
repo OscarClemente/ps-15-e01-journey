@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(TAG, "Actualizar la base de datos desde la version " + oldVersion + " a la version "
                 + newVersion + "destruira todos los datos");
-        db.execSQL("DROP TABLE IF EXISTS compras");
+        db.execSQL("DROP TABLE IF EXISTS comprar");
         db.execSQL("DROP TABLE IF EXISTS usuario");
         db.execSQL("DROP TABLE IF EXISTS paquete");
         onCreate(db);
