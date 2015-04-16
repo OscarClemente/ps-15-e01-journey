@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
     private static RecyclerView recyclerView;
     private static ArrayList<CardData> cards;
     static View.OnClickListener myOnClickListener;
-    private AdaptadorPaquetes adPaquetes;
+    private AdaptadorPaquetes adPaquetes = new AdaptadorPaquetes(this);
     int id = 0;
 
     protected static final String SEARCH_DESTINO = "DESTINO";
@@ -50,35 +50,20 @@ public class MainActivity extends ActionBarActivity {
         //Crea los objetos que permiten poblar el cardView a partir de los datos de DatosInterfaz
 
         cards = new ArrayList<CardData>();
-        for (int i = 0; i < DatosInterfaz.nameArray.length; i++) {
-            cards.add(new CardData(
-                    DatosInterfaz.nameArray[i],
-                    DatosInterfaz.infoArray[i],
-                    "/res/drawable/android.png",
-                    DatosInterfaz.id_[i]
-            ));
-        }
-
 
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
 
-        AdaptadorPaquetes db = new AdaptadorPaquetes(this);
-        db.open();
-        long id4 = db.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas5 (en inglés: Falkland Islands, AFI: [ˈfɔːlklənd ˈaɪləndz]; del francés îles Malouines","/res/drawable/android.png");
-        long id2 = db.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","/res/drawable/android.png");
-        long id3 = db.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","/res/drawable/android.png");
+        adPaquetes.open();
 
-        //Cursor paquetes = adPaquetes.listarPaquetes();
+        //SI NO APARECE NADA DESCOMENTA ESTO PARA QUE SE AÑADA A LA BD, SOLO UNA EJECUCION LUEGO COMENTALO O HABRA VARIOS PAQUETES IGUALES
+        //SI AL CONTRARIO APARECEN REPETIDOS, BORRA LA BASE DE DATOS
 
-        //PRUEBA
-        /*AdaptadorPaquetes db = new AdaptadorPaquetes(this);
-        db.open();
-        long id4 = db.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas5 (en inglés: Falkland Islands, AFI: [ˈfɔːlklənd ˈaɪləndz]; del francés îles Malouines","/res/drawable/android.png");
-        long id2 = db.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","/res/drawable/android.png");
-        long id3 = db.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","/res/drawable/android.png");
+        //adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas5 (en inglés: Falkland Islands, AFI: [ˈfɔːlklənd ˈaɪləndz]; del francés îles Malouines","/res/drawable/sheychelles.jpg");
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","/res/drawable/india.jpg");
+        //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","/res/drawable/piramides.jpg");
 
-        listarPaquetes (null, 0, 0, 0);*/
+        listarPaquetes (null, 0, 0, 0);
     }
 
 
@@ -124,7 +109,6 @@ public class MainActivity extends ActionBarActivity {
                 cards.add(new CardData(
                         paquetes.getString(paquetes.getColumnIndex("nombre")),
                         paquetes.getString(paquetes.getColumnIndex("destino")),
-                        //paquetes.getInt(paquetes.getColumnIndex("imagen")),
                         paquetes.getString(paquetes.getColumnIndex("imagen")),
                         id++
                 ));
@@ -137,9 +121,8 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //Controla la accion de los botones del menu superior
         switch (item.getItemId()){
-            //boton de filtro/busqueda
+            //boton de filtro-busqueda
             case R.id.action_filter:
-                //new activity?
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
                 MainActivity.this.startActivity(filterIntent);
                 return true;
@@ -147,27 +130,4 @@ public class MainActivity extends ActionBarActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
-
-/*
- private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
-        Cursor paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
-        cards = new ArrayList<Paquete>();
-        if(paquetes.moveToFirst()){
-            while(paquetes.moveToNext()){
-                cards.add(new Paquete(
-                        id++,
-                        paquetes.getString(paquetes.getColumnIndex("nombre")),
-                        paquetes.getString(paquetes.getColumnIndex("destino")),
-                        paquetes.getInt(paquetes.getColumnIndex("precio")),
-                        paquetes.getInt(paquetes.getColumnIndex("duracion")),
-                        paquetes.getInt(paquetes.getColumnIndex("calificacion")),
-                        paquetes.getString(paquetes.getColumnIndex("descripcion")),
-                        paquetes.getString(paquetes.getColumnIndex("imagen"))
-                ));
-            }
-        }
-    }
- */

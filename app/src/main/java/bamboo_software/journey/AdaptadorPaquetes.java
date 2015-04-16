@@ -55,6 +55,7 @@ public class AdaptadorPaquetes {
     public AdaptadorPaquetes open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
+        //mDbHelper.onUpgrade(mDb,1,2);
         return this;
     }
 
