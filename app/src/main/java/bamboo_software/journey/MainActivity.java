@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.io.File;
@@ -68,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
         long id2 = db.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","/res/drawable/android.png");
         long id3 = db.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","/res/drawable/android.png");
 
-        Cursor paquetes = adPaquetes.listarPaquetes();
+        //Cursor paquetes = adPaquetes.listarPaquetes();
 
         //PRUEBA
         /*AdaptadorPaquetes db = new AdaptadorPaquetes(this);
@@ -132,6 +133,21 @@ public class MainActivity extends ActionBarActivity {
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Controla la accion de los botones del menu superior
+        switch (item.getItemId()){
+            //boton de filtro/busqueda
+            case R.id.action_filter:
+                //new activity?
+                Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
+                MainActivity.this.startActivity(filterIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 }
 
