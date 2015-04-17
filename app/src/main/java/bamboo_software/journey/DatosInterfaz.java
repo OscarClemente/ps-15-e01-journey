@@ -13,8 +13,8 @@ public class DatosInterfaz {
     static String[] infoArray = {"Belgica", "Belgica", "Belgica",
             "España", "Francia", "UK",
             "USA", "Japon", "Alemania", "USA"};
-    static Integer[] drawableArray = {R.drawable.zaragoza1, R.drawable.zaragoza2, R.drawable.zaragoza2,
+    static Integer[] drawableArray = {R.drawable.india, R.drawable.zaragoza2, R.drawable.paris,
             R.drawable.zaragoza1, R.drawable.zaragoza2, R.drawable.android, R.drawable.android,
-            R.drawable.android, R.drawable.android, R.drawable.android};
+            R.drawable.android, R.drawable.japon, R.drawable.android};
     static Integer[] id_ = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 }

@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "nombre text not null, destino text not null,"
                     + "precio integer not null,"
                     + "duracion integer not null, calificacion integer not null,"
-                    + "descripcion text not null, imagen text not null);";
+                    + "descripcion text not null, imagen integer not null);";
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (id integer not null, "

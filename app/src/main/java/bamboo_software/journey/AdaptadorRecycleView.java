@@ -68,23 +68,18 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
 
         textViewName.setText(cardDataSet.get(listPosition).getName());
         textViewInfo.setText(cardDataSet.get(listPosition).getInfo());
-        //imageView.setImageResource(cardDataSet.get(listPosition).getImage());
-        //imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 200, 150));
+        imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 100, 75));
 
-        File imgFile = new  File(cardDataSet.get(listPosition).getImage());
-
-        if(imgFile.exists()){
-
-            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-            imageView.setImageBitmap(myBitmap);
-
-        }
     }
 
     @Override
     public int getItemCount() {
         return cardDataSet.size();
+    }
+
+    public void deleteContent() {
+        cardDataSet.clear();
+        notifyDataSetChanged();
     }
 
     /**

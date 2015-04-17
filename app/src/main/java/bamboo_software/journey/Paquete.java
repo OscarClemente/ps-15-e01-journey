@@ -12,11 +12,11 @@ public class Paquete {
     private int duracion;
     private int calificacion;
     private String descripcion;
-    private String imagen;
+    private int imagen;
 
 
     public Paquete(long id, String nombre, String destino, int precio, int duracion,
-                   int calificacion, String descripcion, String imagen) {
+                   int calificacion, String descripcion, int imagen) {
         this.id = id;
         this.nombre = nombre;
         this.destino = destino;
@@ -79,11 +79,11 @@ public class Paquete {
         this.descripcion = descripcion;
     }
 
-    public String getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
     }
 }

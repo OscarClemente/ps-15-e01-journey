@@ -77,7 +77,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public long crearPaquete(String nombre, String destino, int precio, int duracion,
-                             int calificacion, String descripcion, String imagen) {
+                             int calificacion, String descripcion, int imagen) {
         try {
             if (nombre.equals("")) {
                 return -1;
@@ -146,7 +146,7 @@ public class AdaptadorPaquetes {
         where = where.substring(0, where.length()-5);   //Elimina el ultimo and
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
-                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION},
+                        KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION, KEY_IMAGEN},
                 where, null, null, null, KEY_NOMBRE);
     }
 
@@ -184,7 +184,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public boolean actualizarPaquete(long rowId, String nombre, String destino, int precio, int duracion, int calificacion,
-                                     String descripcion, String imagen) {
+                                     String descripcion, int imagen) {
         try {
             if (nombre.equals("")) {
                 return false;
@@ -225,7 +225,7 @@ public class AdaptadorPaquetes {
                             cur.getInt(cur.getColumnIndex(KEY_DURACION)),
                             cur.getInt(cur.getColumnIndex(KEY_CALIFICACION)),
                             cur.getString(cur.getColumnIndex(KEY_DESCRIPCION)),
-                            cur.getString(cur.getColumnIndex(KEY_IMAGEN))
+                            cur.getInt(cur.getColumnIndex(KEY_IMAGEN))
                     )
             );
         }

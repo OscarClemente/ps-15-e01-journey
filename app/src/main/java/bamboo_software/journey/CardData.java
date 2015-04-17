@@ -11,10 +11,10 @@ public class CardData {
 
     String name;
     String info;
-    String image;
+    int image;
     int id_;
 
-    public CardData(String name, String info, String image,  int id_) {
+    public CardData(String name, String info, int image,  int id_) {
         this.name = name;
         this.info = info;
         this.image = image;
@@ -32,7 +32,7 @@ public class CardData {
     }
 
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 

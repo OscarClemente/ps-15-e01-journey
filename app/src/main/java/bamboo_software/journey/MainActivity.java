@@ -51,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
         cards = new ArrayList<CardData>();
 
+
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
 
@@ -58,10 +59,10 @@ public class MainActivity extends ActionBarActivity {
 
         //SI NO APARECE NADA DESCOMENTA ESTO PARA QUE SE AÑADA A LA BD, SOLO UNA EJECUCION LUEGO COMENTALO O HABRA VARIOS PAQUETES IGUALES
         //SI AL CONTRARIO APARECEN REPETIDOS, BORRA LA BASE DE DATOS
-
-        //adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas5 (en inglés: Falkland Islands, AFI: [ˈfɔːlklənd ˈaɪləndz]; del francés îles Malouines","/res/drawable/sheychelles.jpg");
-        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","/res/drawable/india.jpg");
-        //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","/res/drawable/piramides.jpg");
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.india);
+        //adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas (en inglés: Falkland Islands, AFI: [ˈfuckland ˈiland]; del francés iles Malouines",R.drawable.sheychelles);
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.paris);
+        //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.",R.drawable.piramides);
 
         listarPaquetes (null, 0, 0, 0);
     }
@@ -101,22 +102,31 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
-        //Cursor paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
-        Cursor paquetes = adPaquetes.listarPaquetes();
+        Cursor paquetes;
+        if (destino == null && precio == 0 && valoracion == 0 && duracion == 0){
+            paquetes = adPaquetes.listarPaquetes();
+        }
+        else {
+            paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
+        }
         cards = new ArrayList<CardData>();
-        if(paquetes.moveToFirst()){
-            while(paquetes.moveToNext()){
-                cards.add(new CardData(
-                        paquetes.getString(paquetes.getColumnIndex("nombre")),
-                        paquetes.getString(paquetes.getColumnIndex("destino")),
-                        paquetes.getString(paquetes.getColumnIndex("imagen")),
-                        id++
-                ));
+        if(paquetes!=null) {
+            if (paquetes.moveToFirst()) {
+                while (paquetes.moveToNext()) {
+                    cards.add(new CardData(
+                            paquetes.getString(paquetes.getColumnIndex("nombre")),
+                            paquetes.getString(paquetes.getColumnIndex("destino")),
+                            paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                            id++
+                    ));
+                }
             }
         }
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
     }
+
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         //Controla la accion de los botones del menu superior
