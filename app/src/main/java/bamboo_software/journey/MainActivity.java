@@ -9,8 +9,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -21,7 +23,8 @@ public class MainActivity extends ActionBarActivity {
     private static RecyclerView recyclerView;
     private static ArrayList<CardData> cards;
     static View.OnClickListener myOnClickListener;
-    private AdaptadorPaquetes adPaquetes;
+    private AdaptadorPaquetes adPaquetes = new AdaptadorPaquetes(this);
+    int id = 0;
 
     protected static final String SEARCH_DESTINO = "DESTINO";
     protected static final String SEARCH_DURACION = "DURACION";
@@ -47,30 +50,21 @@ public class MainActivity extends ActionBarActivity {
         //Crea los objetos que permiten poblar el cardView a partir de los datos de DatosInterfaz
 
         cards = new ArrayList<CardData>();
-        for (int i = 0; i < DatosInterfaz.nameArray.length; i++) {
-            cards.add(new CardData(
-                    DatosInterfaz.nameArray[i],
-                    DatosInterfaz.infoArray[i],
-                    DatosInterfaz.drawableArray[i],
-                    DatosInterfaz.id_[i]
-            ));
-        }
 
 
         adapter = new AdaptadorRecycleView(cards, getResources());
         recyclerView.setAdapter(adapter);
-/*
-        //PRUEBA
-        AdaptadorPaquetes db = new AdaptadorPaquetes(this);
-        db.open();
-        long id4 = db.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas5 (en inglés: Falkland Islands, AFI: [ˈfɔːlklənd ˈaɪləndz]; del francés îles Malouines, nombre dado por el explorador Bougainville) es un archipiélago situado en la plataforma continental de América del Sur, dentro del sector de mar epicontinental del océano Atlántico Sur que Argentina denomina mar Argentino. La menor distancia de las islas Malvinas al continente americano se encuentra entre la roca Mintay al sudoeste de la isla Beauchene y el cabo San Juan en la isla de los Estados, a 356,4 km. La principal localidad de las islas Malvinas es Puerto Argentino (Stanley en inglés), ésta está ubicada en la costa oriental de la isla Soledad.");
-        long id2 = db.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros sobre el nivel del mar y 7500 metros sobre el lecho oceánico, es el pico más alto de España, el de cualquier tierra emergida del océano Atlántico y el tercer mayor volcán de la Tierra desde su base en el lecho oceánico, después del Mauna Kea y el Mauna Loa, ambos en la isla de Hawái.1 La altitud del Teide convierte además a la isla de Tenerife en la décima isla más alta de todo el mundo.");
-        long id3 = db.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos y emblemáticos monumentos de esta civilización, y en particular, las tres grandes pirámides de Guiza, las tumbas o cenotafios de los faraones Keops, Kefrén y Micerino, cuya construcción se remonta, para la gran mayoría de estudiosos, al periodo denominado Imperio Antiguo de Egipto. La Gran Pirámide de Guiza, construida por Keops (Jufu), es una de las Siete Maravillas del Mundo Antiguo, además de ser la única que aún perdura.");
-        Intent i = new Intent(this, PaqueteActivity.class);
-        long id = 2;
-        i.putExtra(AdaptadorPaquetes.KEY_ROWID,id);
-        startActivityForResult(i, 1);
-*/
+
+        adPaquetes.open();
+
+        //SI NO APARECE NADA DESCOMENTA ESTO PARA QUE SE AÑADA A LA BD, SOLO UNA EJECUCION LUEGO COMENTALO O HABRA VARIOS PAQUETES IGUALES
+        //SI AL CONTRARIO APARECEN REPETIDOS, BORRA LA BASE DE DATOS
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.india);
+        //adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas (en inglés: Falkland Islands, AFI: [ˈfuckland ˈiland]; del francés iles Malouines",R.drawable.sheychelles);
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.paris);
+        //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.",R.drawable.piramides);
+
+        listarPaquetes (null, 0, 0, 0);
     }
 
 
@@ -108,8 +102,42 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
-        Cursor paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
-        /* FALTA MOSTRAR PAQUETES */
+        Cursor paquetes;
+        if (destino == null && precio == 0 && valoracion == 0 && duracion == 0){
+            paquetes = adPaquetes.listarPaquetes();
+        }
+        else {
+            paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
+        }
+        cards = new ArrayList<CardData>();
+        if(paquetes!=null) {
+            if (paquetes.moveToFirst()) {
+                while (paquetes.moveToNext()) {
+                    cards.add(new CardData(
+                            paquetes.getString(paquetes.getColumnIndex("nombre")),
+                            paquetes.getString(paquetes.getColumnIndex("destino")),
+                            paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                            id++
+                    ));
+                }
+            }
+        }
+        adapter = new AdaptadorRecycleView(cards, getResources());
+        recyclerView.setAdapter(adapter);
     }
 
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Controla la accion de los botones del menu superior
+        switch (item.getItemId()){
+            //boton de filtro-busqueda
+            case R.id.action_filter:
+                Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
+                MainActivity.this.startActivity(filterIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -28,7 +28,7 @@
             android:adjustViewBounds="false" />
 
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/textViewNombre"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="start"
@@ -39,7 +39,7 @@
             android:text="@string/sample_text_header" />
 
         <TextView
-            android:id="@+id/textViewInfo"
+            android:id="@+id/textViewDestino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

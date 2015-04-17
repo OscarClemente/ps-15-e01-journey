@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "nombre text not null, destino text not null,"
                     + "precio integer not null,"
                     + "duracion integer not null, calificacion integer not null,"
-                    + "descripcion text not null, imagen text not null);";
+                    + "descripcion text not null, imagen integer not null);";
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (id integer not null, "
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(TAG, "Actualizar la base de datos desde la version " + oldVersion + " a la version "
                 + newVersion + "destruira todos los datos");
-        db.execSQL("DROP TABLE IF EXISTS compras");
+        db.execSQL("DROP TABLE IF EXISTS comprar");
         db.execSQL("DROP TABLE IF EXISTS usuario");
         db.execSQL("DROP TABLE IF EXISTS paquete");
         onCreate(db);

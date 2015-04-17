@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +32,8 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            this.textViewInfo = (TextView) itemView.findViewById(R.id.textViewInfo);
+            this.textViewName = (TextView) itemView.findViewById(R.id.textViewNombre);
+            this.textViewInfo = (TextView) itemView.findViewById(R.id.textViewDestino);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.imageView);
         }
 
@@ -66,13 +68,18 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
 
         textViewName.setText(cardDataSet.get(listPosition).getName());
         textViewInfo.setText(cardDataSet.get(listPosition).getInfo());
-        //imageView.setImageResource(cardDataSet.get(listPosition).getImage());
-        imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 200, 150));
+        imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 100, 75));
+
     }
 
     @Override
     public int getItemCount() {
         return cardDataSet.size();
+    }
+
+    public void deleteContent() {
+        cardDataSet.clear();
+        notifyDataSetChanged();
     }
 
     /**
@@ -120,4 +127,5 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
         return BitmapFactory.decodeResource(res, resId, options);
     }
 }
+
 
