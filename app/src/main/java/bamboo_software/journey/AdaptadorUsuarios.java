@@ -134,6 +134,26 @@ public class AdaptadorUsuarios {
     }
 
     /**
+     * Devuelve un Cursor colocado en el usuario que coincide con la rowId dada
+     *
+     * @return Cursor colocado en el usuario deseado si esta
+     * @throws SQLException si no se puede encontrar
+     */
+    public Cursor listarUsuarioNick(String nick ) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE,
+                                KEY_DIRECCION, KEY_NICK, KEY_PASS, KEY_TELEFONO},
+                        KEY_NICK + "=" + nick, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
+    /**
      * Actualiza el usuario con los detalles proporcionados.
      * El usuario a actualizar se especifica mediante la rowId
      *
