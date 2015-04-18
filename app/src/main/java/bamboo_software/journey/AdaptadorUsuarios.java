@@ -109,7 +109,7 @@ public class AdaptadorUsuarios {
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE, KEY_DIRECCION,
                         KEY_NICK, KEY_PASS, KEY_TELEFONO},
-                        null, null, null, null, null);
+                        null, null, null, KEY_NICK, null);
     }
 
     /**
