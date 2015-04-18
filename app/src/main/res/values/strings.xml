@@ -7,6 +7,8 @@
     <string name="sample_text_footer">Sample card footer</string>
     <string name="sample_text_image">Sample image</string>
     <string name="paquete">Paquete</string>
+    <string name="registro">Registro</string>
+    <string name="inicio">Inicio</string>
 
     <string name="action_filter">Filtrar</string>
 </resources>
