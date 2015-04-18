@@ -109,7 +109,7 @@ public class AdaptadorUsuarios {
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE, KEY_DIRECCION,
                         KEY_NICK, KEY_PASS, KEY_TELEFONO},
-                        null, null, null, KEY_NICK, null);
+                        null, null, null, null, KEY_NICK);
     }
 
     /**
@@ -125,7 +125,7 @@ public class AdaptadorUsuarios {
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE,
                                 KEY_DIRECCION, KEY_NICK, KEY_PASS, KEY_TELEFONO},
-                        KEY_CORREO + "=" + correo, null, null, null, null, null);
+                        KEY_CORREO + "='" + correo + "'", null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -139,13 +139,13 @@ public class AdaptadorUsuarios {
      * @return Cursor colocado en el usuario deseado si esta
      * @throws SQLException si no se puede encontrar
      */
-    public Cursor listarUsuarioNick(String nick ) throws SQLException {
+    public Cursor listarUsuarioNick(String nick) throws SQLException {
 
         Cursor mCursor =
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_NOMBRE,
                                 KEY_DIRECCION, KEY_NICK, KEY_PASS, KEY_TELEFONO},
-                        KEY_NICK + "=" + nick, null, null, null, null, null);
+                        KEY_NICK + "='" + nick + "'", null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
