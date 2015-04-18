@@ -101,7 +101,7 @@ public class AdaptadorCompras {
     public Cursor listarCompras() {
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO,
-                KEY_ID, KEY_FECHA}, null, null, null, KEY_ID, null);
+                KEY_ID, KEY_FECHA}, null, null, null, null, KEY_ID);
     }
 
     /**

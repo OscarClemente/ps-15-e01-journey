@@ -121,7 +121,7 @@ public class AdaptadorPaquetes {
 
         return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
                         KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION, KEY_IMAGEN},
-                null, null, null, KEY_NOMBRE, null);
+                null, null, null, null, KEY_NOMBRE);
     }
 
     /**
