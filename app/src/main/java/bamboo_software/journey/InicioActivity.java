@@ -23,7 +23,12 @@ public class InicioActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.inicio);
+        setTitle(R.string.inicio);
+
         Button botonRegistrar = (Button) findViewById(R.id.registrar);
+
+
 
         botonRegistrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -36,8 +41,7 @@ public class InicioActivity extends Activity {
         dbHelper = new AdaptadorUsuarios(this);
         dbHelper.open();
 
-        setContentView(R.layout.inicio);
-        setTitle(R.string.inicio);
+
 
         mNickText = (EditText) findViewById(R.id.nick);
         mPassText = (EditText) findViewById(R.id.pass);

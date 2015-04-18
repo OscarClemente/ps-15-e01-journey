@@ -113,7 +113,7 @@ public class RegistroActivity extends Activity {
         Cursor usuarioCorreo = dbHelper.listarUsuario(correo);
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
-        if (mRowCorreo.equals("")) {
+        if (mRowNick.equals("")) {
             if (usuarioCorreo == null && usuarioNick == null && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
                     !nombre.equals("") && !direccion.equals("") && !pass.equals("") && !String.valueOf(telefono).equals("")) {
                 long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
@@ -133,7 +133,7 @@ public class RegistroActivity extends Activity {
                 dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
             }
         }
-        dbHelper.close();
+        //dbHelper.close();
     }
 
 }
