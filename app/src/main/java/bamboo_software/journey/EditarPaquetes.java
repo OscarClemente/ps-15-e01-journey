@@ -120,13 +120,13 @@ public class EditarPaquetes extends Activity {
         String descripcion = mDescripcion.getText().toString();
 
         if (mRowId == null) {
-                long id = paqueteDbHelper.crearPaquete(nombre,precio,duracion,calificacion,descripcion);
-                if (id > 0) {
-                    mRowId = id;
-                 }
+                //long id = paqueteDbHelper.crearPaquete(nombre,precio,duracion,calificacion,descripcion);
+              //  if (id > 0) {
+              //      mRowId = id;
+              //   }
         }
         else {
-                paqueteDbHelper.actualizarPaquete(mRowId,nombre,precio,duracion,calificacion,descripcion);
+               // paqueteDbHelper.actualizarPaquete(mRowId,nombre,precio,duracion,calificacion,descripcion);
         }
         paqueteDbHelper.close();
     }

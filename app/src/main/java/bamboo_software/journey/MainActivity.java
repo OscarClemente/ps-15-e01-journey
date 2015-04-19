@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     protected static final String SEARCH_DURACION = "DURACION";
     protected static final String SEARCH_PRECIO = "PRECIO";
     protected static final String SEARCH_VALORACION = "VALORACION";
+    protected static final int RESULT_LOAD_IMAGE = 1;
 
     private static final int SEARCH_ACTIVITY = 0;
 
@@ -133,9 +134,14 @@ public class MainActivity extends ActionBarActivity {
         switch (item.getItemId()){
             //boton de filtro-busqueda
             case R.id.action_filter:
+                Intent i = new Intent(
+                Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+                /*
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
                 MainActivity.this.startActivity(filterIntent);
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
