@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class RegistroActivity extends ActionBarActivity {
 
-    private static final int ACTIVITY_CLIENTE=1;
+    private static final int ACTIVITY_CLIENTE = 1;
 
     private EditText mNickText;
     private EditText mPassText;

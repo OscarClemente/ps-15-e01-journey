@@ -10,8 +10,8 @@ import android.widget.EditText;
 
 public class InicioActivity extends ActionBarActivity {
 
-    private static final int ACTIVITY_ADMIN=0;
-    private static final int ACTIVITY_CLIENTE=1;
+    private static final int ACTIVITY_ADMIN = 0;
+    private static final int ACTIVITY_CLIENTE = 1;
 
     private EditText mNickText;
     private EditText mPassText;
