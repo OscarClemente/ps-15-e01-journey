@@ -31,6 +31,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "nick text not null, nombre text not null, direccion text not null,"
                     + "pass text not null, telefono integer) WITHOUT ROWID; ";
 
+    private static final String ADMIN_CREATE =
+            "insert into usuario (correo, nick , nombre, direccion, pass, telefono ) " +
+                    "VALUES (admin@bamboo.com, admin, Administrador, Calle Maria de Luna," +
+                    "bamboo-software, 123456789);";
+
+
     private static final String TAG = "AdaptadorBD";
     private static final String DATABASE_NAME = "journey";
     private static final int DATABASE_VERSION = 1;
@@ -45,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(DATABASE_CREATE);
         db.execSQL(DATABASE_CREATE3);
         db.execSQL(DATABASE_CREATE2);
+        db.execSQL(ADMIN_CREATE);
 
     }
 
