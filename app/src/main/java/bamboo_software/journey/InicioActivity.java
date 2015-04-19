@@ -80,7 +80,7 @@ public class InicioActivity extends Activity {
         if (nickIntroducido.equals(nick) && passIntroducido.equals(pass)) {
             mRowNick = nick;
             if (nickIntroducido.equals("admin")) {
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, InicioPaquetes.class);
                 startActivityForResult(i, ACTIVITY_ADMIN);
             }
             else {
