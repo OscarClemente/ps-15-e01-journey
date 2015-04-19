@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InicioActivity extends Activity {
+public class InicioActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_ADMIN=0;
     private static final int ACTIVITY_CLIENTE=1;
