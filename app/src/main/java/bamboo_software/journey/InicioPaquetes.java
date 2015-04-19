@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
@@ -32,8 +34,22 @@ public class InicioPaquetes extends ListActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_paquetes);
+        setTitle(R.string.MenuAdministrador);
+
+        Button botonRegistrar = (Button) findViewById(R.id.registrar);
+
+
+
+        botonRegistrar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(InicioPaquetes.this, EditarPaquetes.class);
+                InicioPaquetes.this.startActivityForResult(i, ACTIVITY_CREATE);
+            }
+
+        });
+        super.onCreate(savedInstanceState);
+
         mDbHelper = new AdaptadorPaquetes(this);
         mDbHelper.open();
         fillData();
