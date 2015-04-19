@@ -87,20 +87,20 @@ public class RegistroActivity extends ActionBarActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        guardarEstado();
+        //guardarEstado();
         outState.putSerializable(AdaptadorUsuarios.KEY_NICK, mRowNick);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        guardarEstado();
+       // guardarEstado();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        poblarCampos();
+       // poblarCampos();
     }
 
     public void guardarEstado() {
@@ -114,6 +114,9 @@ public class RegistroActivity extends ActionBarActivity {
         Cursor usuarioCorreo = dbHelper.listarUsuario(correo);
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
+
+        dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
+/*
         if (mRowNick.equals("")) {
             if (usuarioCorreo == null && usuarioNick == null && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
                     !nombre.equals("") && !direccion.equals("") && !pass.equals("") && !String.valueOf(telefono).equals("")) {
@@ -133,7 +136,7 @@ public class RegistroActivity extends ActionBarActivity {
             else {
                 dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
             }
-        }
+        }*/
         //dbHelper.close();
     }
 

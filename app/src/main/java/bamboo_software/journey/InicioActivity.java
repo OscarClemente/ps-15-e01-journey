@@ -59,14 +59,14 @@ public class InicioActivity extends ActionBarActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        guardarEstado();
+        //guardarEstado();
         outState.putSerializable(AdaptadorUsuarios.KEY_NICK, mRowNick);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        guardarEstado();
+        //guardarEstado();
     }
 
     public void guardarEstado() {
