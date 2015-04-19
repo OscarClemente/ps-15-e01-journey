@@ -17,6 +17,8 @@ public class EditarPaquetes extends Activity {
     private EditText mDuracionText;
     private EditText mCalificacionText;
     private EditText mDescripcion;
+    private EditText mDestino;
+    private EditText mImagenText;
 
     private Long mRowId;
     private int mPrecio;
@@ -44,6 +46,8 @@ public class EditarPaquetes extends Activity {
         mDuracionText = (EditText) findViewById(R.id.duracion);
         mCalificacionText = (EditText) findViewById(R.id.calificacion);
         mDescripcion = (EditText) findViewById(R.id.descripcion);
+        mDestino = (EditText) findViewById(R.id.destino);
+        //mImagenText = (EditText) findViewById(R.id.imagen);
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
 
@@ -83,6 +87,10 @@ public class EditarPaquetes extends Activity {
                     paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_CALIFICACION)));
             mDescripcion.setText(paquete.getString(
                     paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_DESCRIPCION)));
+            mDestino.setText(paquete.getString(
+                    paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_DESTINO)));
+            //mImagenText.setText(paquete.getString(
+            //        paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_IMAGEN)));
         }
         else {
             mIdText.setText("***");
@@ -118,15 +126,19 @@ public class EditarPaquetes extends Activity {
         String Scalificacion = mCalificacionText.getText().toString();
         int calificacion = parseInt(Scalificacion);
         String descripcion = mDescripcion.getText().toString();
+        String destino = mDestino.getText().toString();
+        //String Simagen = mCalificacionText.getText().toString();
+        //int imagen = parseInt(Scalificacion);
+        int imagen = R.drawable.zaragoza1;
 
         if (mRowId == null) {
-                //long id = paqueteDbHelper.crearPaquete(nombre,precio,duracion,calificacion,descripcion);
-              //  if (id > 0) {
-              //      mRowId = id;
-              //   }
+                long id = paqueteDbHelper.crearPaquete(nombre,destino,precio,duracion,calificacion,descripcion,imagen);
+                if (id > 0) {
+                    mRowId = id;
+                 }
         }
         else {
-               // paqueteDbHelper.actualizarPaquete(mRowId,nombre,precio,duracion,calificacion,descripcion);
+                paqueteDbHelper.actualizarPaquete(mRowId,nombre,destino,precio,duracion,calificacion,descripcion,imagen);
         }
         paqueteDbHelper.close();
     }

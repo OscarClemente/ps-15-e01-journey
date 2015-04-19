@@ -36,7 +36,6 @@ public class InicioPaquetes extends ListActivity {
         setContentView(R.layout.lista_paquetes);
         mDbHelper = new AdaptadorPaquetes(this);
         mDbHelper.open();
-       // mDbHelper.crearPaquete("islas malvinas", 1000, 10, 5, "mu bonitooooo");
         fillData();
         registerForContextMenu(getListView());
         this.setSelection(positionView);
