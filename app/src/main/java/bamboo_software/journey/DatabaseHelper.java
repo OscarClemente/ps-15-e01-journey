@@ -33,8 +33,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String ADMIN_CREATE =
             "insert into usuario (correo, nick , nombre, direccion, pass, telefono ) " +
-                    "VALUES (admin@bamboo.com, admin, Administrador, Calle Maria de Luna," +
-                    "bamboo-software, 123456789);";
+                    "VALUES ('admin@bamboo.com', 'admin', 'Administrador', 'Calle Maria de Luna'," +
+                    "'bamboo-software', 123456789);";
 
 
     private static final String TAG = "AdaptadorBD";
