@@ -1,6 +1,5 @@
 package bamboo_software.journey;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -70,7 +69,7 @@ public class InicioActivity extends ActionBarActivity {
         guardarEstado();
     }
 
-    private void guardarEstado() {
+    public void guardarEstado() {
         String nickIntroducido = mNickText.getText().toString();
         String passIntroducido = mPassText.getText().toString();
 
@@ -88,9 +87,6 @@ public class InicioActivity extends ActionBarActivity {
                 Intent i = new Intent(this, MainActivity.class);
                 startActivityForResult(i, ACTIVITY_CLIENTE);
             }
-
-        }
-        else {
 
         }
         dbHelper.close();

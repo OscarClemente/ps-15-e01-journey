@@ -1,14 +1,14 @@
 package bamboo_software.journey;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegistroActivity extends Activity {
+public class RegistroActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_CLIENTE=1;
 
@@ -54,6 +54,7 @@ public class RegistroActivity extends Activity {
 
         botonConfirmar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                RegistroActivity.this.guardarEstado();
                 Intent i = new Intent(RegistroActivity.this, MainActivity.class);
                 RegistroActivity.this.startActivityForResult(i, ACTIVITY_CLIENTE);
             }
@@ -102,7 +103,7 @@ public class RegistroActivity extends Activity {
         poblarCampos();
     }
 
-    private void guardarEstado() {
+    public void guardarEstado() {
         String nick = mNickText.getText().toString();
         String pass = mPassText.getText().toString();
         String correo = mCorreoText.getText().toString();
