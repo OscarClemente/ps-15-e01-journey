@@ -9,6 +9,18 @@
     <string name="paquete">Paquete</string>
     <string name="registro">Registro</string>
     <string name="inicio">Inicio</string>
+    <string name="ID">ID</string>
+    <string name="nombre">Nombre</string>
+    <string name="precio">Precio</string>
+    <string name="duracion">Duración</string>
+    <string name="descripcion">Descripción</string>
+    <string name="calificacion">Calificación</string>
+    <string name="confirm">Confirmar</string>
+    <string name="no_paquetes">No hay Paquetes</string>
+    <string name="editar_paquetes">Editar Paquetes</string>
+    <string name="menu_insertar">Añadir Paquete</string>
+    <string name="menu_borrar">Borrar Paquete</string>
+    <string name="menu_listar_paquetes">Lista de Paquetes</string>
 
     <string name="action_filter">Filtrar</string>
 </resources>
