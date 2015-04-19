@@ -24,12 +24,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "correo text not null, fecha text not null,"
                     + "FOREIGN KEY(id) REFERENCES paquete(_id),"
                     + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(id, correo)) WITHOUT ROWID;";
+                    + "PRIMARY KEY(id, correo));";
 
     private static final String DATABASE_CREATE3 =
             "create table usuario (correo text primary key not null, "
                     + "nick text not null, nombre text not null, direccion text not null,"
-                    + "pass text not null, telefono integer) WITHOUT ROWID; ";
+                    + "pass text not null, telefono integer) ; ";
 
     private static final String ADMIN_CREATE =
             "insert into usuario (correo, nick , nombre, direccion, pass, telefono ) " +
