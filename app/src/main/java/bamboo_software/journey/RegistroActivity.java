@@ -27,9 +27,6 @@ public class RegistroActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dbHelper = new AdaptadorUsuarios(this);
-        dbHelper.open();
-
         setContentView(R.layout.registro);
         setTitle(R.string.registro);
 
@@ -42,21 +39,23 @@ public class RegistroActivity extends ActionBarActivity {
         
         Button botonConfirmar = (Button) findViewById(R.id.confirmar);
 
-        mRowNick = (savedInstanceState == null) ? "" :
+        /*mRowNick = (savedInstanceState == null) ? "" :
                 (String) savedInstanceState.getSerializable(AdaptadorUsuarios.KEY_NICK);
         if (mRowNick.equals("")) {
             Bundle extras = getIntent().getExtras();
                 mRowNick = extras != null ? extras.getString(AdaptadorUsuarios.KEY_NICK)
                     : "";
-        }
+        }*/
 
-        poblarCampos();
+        //poblarCampos();
 
         botonConfirmar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                RegistroActivity.this.guardarEstado();
-                Intent i = new Intent(RegistroActivity.this, MainActivity.class);
-                RegistroActivity.this.startActivityForResult(i, ACTIVITY_CLIENTE);
+                boolean registrado = RegistroActivity.this.guardarEstado();
+                if (registrado) {
+                    Intent i = new Intent(RegistroActivity.this, MainActivity.class);
+                    RegistroActivity.this.startActivityForResult(i, ACTIVITY_CLIENTE);
+                }
             }
 
         });
@@ -84,49 +83,38 @@ public class RegistroActivity extends ActionBarActivity {
        
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //guardarEstado();
-        outState.putSerializable(AdaptadorUsuarios.KEY_NICK, mRowNick);
-    }
+    public boolean guardarEstado() {
+        dbHelper = new AdaptadorUsuarios(this);
+        dbHelper.open();
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-       // guardarEstado();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-       // poblarCampos();
-    }
-
-    public void guardarEstado() {
         String nick = mNickText.getText().toString();
         String pass = mPassText.getText().toString();
         String correo = mCorreoText.getText().toString();
         String nombre = mNombreText.getText().toString();
         String direccion = mDireccionText.getText().toString();
-        int telefono = Integer.parseInt(mTelefonoText.getText().toString());
+        int telefono;
+        try {
+            telefono = Integer.parseInt(mTelefonoText.getText().toString());
+        } catch (NumberFormatException e) {
+            telefono = -1;
+        }
+
+        boolean registrado = false;
 
         Cursor usuarioCorreo = dbHelper.listarUsuario(correo);
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
-
-        dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
-/*
-        if (mRowNick.equals("")) {
-            if (usuarioCorreo == null && usuarioNick == null && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
-                    !nombre.equals("") && !direccion.equals("") && !pass.equals("") && !String.valueOf(telefono).equals("")) {
+        //if (mRowNick.equals("")) {
+            if (!correo.equals("") && correo.contains("@") && !nick.equals("") && !nombre.equals("") &&
+                    !direccion.equals("") && !pass.equals("") && telefono != -1) {
                 long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
-                if (resultado > 0) {
+                registrado = true;
+                /*if (resultado > 0) {
                     mRowNick = nick;
-                }
+                }*/
             }
-        }
-        else {
+        //}
+        /*else {
             if (!mRowCorreo.equals(correo) || !mRowNick.equals(nick)) {
                 if (usuarioCorreo == null && usuarioNick == null) {
                     dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
@@ -137,7 +125,8 @@ public class RegistroActivity extends ActionBarActivity {
                 dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
             }
         }*/
-        //dbHelper.close();
+        dbHelper.close();
+        return registrado;
     }
 
 }

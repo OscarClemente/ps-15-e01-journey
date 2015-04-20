@@ -28,8 +28,6 @@ public class InicioActivity extends ActionBarActivity {
 
         Button botonRegistrar = (Button) findViewById(R.id.registrar);
 
-
-
         botonRegistrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(InicioActivity.this, RegistroActivity.class);
@@ -37,11 +35,6 @@ public class InicioActivity extends ActionBarActivity {
             }
 
         });
-
-        dbHelper = new AdaptadorUsuarios(this);
-        dbHelper.open();
-
-
 
         mNickText = (EditText) findViewById(R.id.nick);
         mPassText = (EditText) findViewById(R.id.pass);
@@ -56,38 +49,31 @@ public class InicioActivity extends ActionBarActivity {
         });
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //guardarEstado();
-        outState.putSerializable(AdaptadorUsuarios.KEY_NICK, mRowNick);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //guardarEstado();
-    }
-
     public void guardarEstado() {
+        dbHelper = new AdaptadorUsuarios(this);
+        dbHelper.open();
+
         String nickIntroducido = mNickText.getText().toString();
         String passIntroducido = mPassText.getText().toString();
 
         Cursor usuario = dbHelper.listarUsuarioNick(nickIntroducido);
-        String nick = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_NICK));
-        String pass = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_PASS));
+        if (usuario != null && usuario.moveToFirst()) {
+            String nick = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_NICK));
+            String pass = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_PASS));
 
-        if (nickIntroducido.equals(nick) && passIntroducido.equals(pass)) {
-            mRowNick = nick;
-            if (nickIntroducido.equals("admin")) {
-                Intent i = new Intent(this, InicioPaquetes.class);
-                startActivityForResult(i, ACTIVITY_ADMIN);
+            if (nickIntroducido.equals(nick) && passIntroducido.equals(pass)) {
+                mRowNick = nick;
+                if (nickIntroducido.equals("admin")) {
+                    Intent i = new Intent(this, InicioPaquetes.class);
+                    startActivityForResult(i, ACTIVITY_ADMIN);
+                } else {
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivityForResult(i, ACTIVITY_CLIENTE);
+                }
             }
-            else {
-                Intent i = new Intent(this, MainActivity.class);
-                startActivityForResult(i, ACTIVITY_CLIENTE);
-            }
-
+        }
+        if (usuario != null && !usuario.isClosed()){
+            usuario.close();
         }
         dbHelper.close();
     }
