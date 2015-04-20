@@ -43,13 +43,17 @@ public class InicioActivity extends ActionBarActivity {
 
         botonIdentificar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                InicioActivity.this.guardarEstado();
+                InicioActivity.this.comprobarUsuario();
             }
 
         });
     }
 
-    public void guardarEstado() {
+    /*
+     * Comprueba que el nick del usuario introducido se encuentra en la base de datos y verifica que
+     * el nick y la contraseña introducidos se corresponden con los que se están alojados en la BD
+     */
+    public void comprobarUsuario() {
         dbHelper = new AdaptadorUsuarios(this);
         dbHelper.open();
 
