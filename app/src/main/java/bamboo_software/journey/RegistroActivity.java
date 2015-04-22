@@ -116,8 +116,9 @@ public class RegistroActivity extends ActionBarActivity {
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
         /* if (mRowNick.equals("")) { */
-            if (!correo.equals("") && correo.contains("@") && !nick.equals("") && !nombre.equals("") &&
-                    !direccion.equals("") && !pass.equals("") && telefono != -1) {
+            if (usuarioCorreo != null && !usuarioCorreo.moveToFirst() && usuarioNick != null &&
+                    !usuarioNick.moveToFirst() && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
+                    !nombre.equals("") && !direccion.equals("") && !pass.equals("") && telefono != -1) {
                 long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
                 registrado = true;
                 /*if (resultado > 0) {
