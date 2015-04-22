@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class MainActivity extends ActionBarActivity {
         //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.paris);
         //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.",R.drawable.piramides);
 
-        listarPaquetes (null, 0, 0, 0);
+       listarPaquetes(null, 0, 0, 0);
     }
 
 
@@ -93,11 +94,12 @@ public class MainActivity extends ActionBarActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SEARCH_ACTIVITY && resultCode == RESULT_OK) {
+            Log.d("SEARCH","Ha vuelto correctamente");
             Bundle extras = data.getExtras();
             String destino = (String) extras.get(SEARCH_DESTINO);
-            int duracion = (int) extras.get(SEARCH_DURACION);
-            float precio = (float) extras.get(SEARCH_PRECIO);
-            float valoracion = (float) extras.get(SEARCH_VALORACION);
+            int duracion = extras.getInt(SEARCH_DURACION);
+            float precio = extras.getFloat(SEARCH_PRECIO);
+            float valoracion = extras.getFloat(SEARCH_VALORACION);
             listarPaquetes(destino, duracion, precio, valoracion);
         }
     }
@@ -134,14 +136,10 @@ public class MainActivity extends ActionBarActivity {
         switch (item.getItemId()){
             //boton de filtro-busqueda
             case R.id.action_filter:
-                Intent i = new Intent(
-                Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-
-                /*
+                Log.d("SEARCH","Lanzando Search Activity");
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
-                MainActivity.this.startActivity(filterIntent);
-                return true;*/
+                MainActivity.this.startActivityForResult(filterIntent, SEARCH_ACTIVITY);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

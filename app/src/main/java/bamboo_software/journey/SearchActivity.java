@@ -34,9 +34,17 @@ public class SearchActivity extends ActionBarActivity {
 
             public void onClick(View view) {
                 Intent extras = new Intent();
-                extras.putExtra(MainActivity.SEARCH_DESTINO, editDestino.getText().toString());
-                extras.putExtra(MainActivity.SEARCH_DURACION, editDuracion.getText().toString());
-                extras.putExtra(MainActivity.SEARCH_PRECIO, editPrecio.getText().toString());
+                if (!editDestino.getText().toString().equals("")) {
+                    extras.putExtra(MainActivity.SEARCH_DESTINO, editDestino.getText().toString());
+                }
+                if (!editDuracion.getText().toString().equals("")) {
+                    extras.putExtra(MainActivity.SEARCH_DURACION,
+                            Integer.parseInt(editDuracion.getText().toString()));
+                }
+                if (!editPrecio.getText().toString().equals("")) {
+                    extras.putExtra(MainActivity.SEARCH_PRECIO,
+                            Float.parseFloat(editPrecio.getText().toString()));
+                }
                 extras.putExtra(MainActivity.SEARCH_VALORACION, editValoracion.getRating());
                 setResult(RESULT_OK, extras);
                 finish();

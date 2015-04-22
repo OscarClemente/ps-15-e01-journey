@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -132,7 +133,7 @@ public class AdaptadorPaquetes {
     public Cursor listarPaquetes(String destino, int duracion, float precio, float valoracion) {
         String where = "";
         if (destino != null) {
-            where += KEY_DESTINO + "=" + destino + " and ";
+            where += KEY_DESTINO + "='" + destino + "' and ";
         }
         if (duracion != 0) {
             where += KEY_DURACION + "=" + duracion + " and ";
@@ -141,10 +142,11 @@ public class AdaptadorPaquetes {
             where += KEY_PRECIO + "<=" + precio + " and ";
         }
         if (valoracion != 0) {
-            where += KEY_CALIFICACION + ">=" + duracion + " and ";
+            where += KEY_CALIFICACION + ">=" + valoracion + " and ";
         }
         where = where.substring(0, where.length()-5);   //Elimina el ultimo and
 
+        Log.d("QUERY", where);
         return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
                         KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION, KEY_DESCRIPCION, KEY_IMAGEN},
                 where, null, null, null, KEY_NOMBRE);
