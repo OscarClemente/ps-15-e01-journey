@@ -163,7 +163,7 @@ public class AdaptadorPaquetes {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_NOMBRE,
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NOMBRE, KEY_DESTINO,
                                 KEY_PRECIO, KEY_DURACION, KEY_CALIFICACION,
                                 KEY_DESCRIPCION, KEY_IMAGEN},
                         KEY_ROWID + "=" + rowId, null, null, null, null, null);

@@ -145,6 +145,12 @@ public class MainActivity extends ActionBarActivity {
         cards = new ArrayList<CardData>();
         if(paquetes!=null) {
             if (paquetes.moveToFirst()) {
+                cards.add(new CardData(
+                        paquetes.getString(paquetes.getColumnIndex("nombre")),
+                        paquetes.getString(paquetes.getColumnIndex("destino")),
+                        paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                        paquetes.getLong(paquetes.getColumnIndex("_id"))
+                ));
                 while (paquetes.moveToNext()) {
                     cards.add(new CardData(
                             paquetes.getString(paquetes.getColumnIndex("nombre")),
