@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -69,8 +70,11 @@ public class MainActivity extends ActionBarActivity {
        listarPaquetes(null, 0, 0, 0);
     }
 
+    /**
+     * Se encarga de lo que ocurre al ser pulsado uno de los CardViews del RecyclerView
+     */
 
-    private static class MyOnClickListener implements View.OnClickListener {
+    private class MyOnClickListener implements View.OnClickListener {
 
         private final Context context;
 
@@ -80,7 +84,28 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onClick(View v) {
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+            RecyclerView.ViewHolder viewHolder
+                    = recyclerView.findViewHolderForPosition(selectedItemPosition);
 
+            TextView textViewName
+                    = (TextView) viewHolder.itemView.findViewById(R.id.cardId);
+            String selectedName = (String) textViewName.getText();
+            long cardId = Long.parseLong(selectedName);
+
+            Intent paqueteIntent = new Intent(MainActivity.this, PaqueteActivity.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putLong("clave", cardId);
+            paqueteIntent.putExtras(mBundle);
+
+            /*adPaquetes.listarPaquete(cardId);
+
+            Cursor cur = adPaquetes.listarPaquete(cardId);
+            startManagingCursor(cur);
+            System.out.println(cur.getString(cur.getColumnIndex(adPaquetes.KEY_NOMBRE)));
+
+            System.out.println(cardId);*/
+            MainActivity.this.startActivity(paqueteIntent);
         }
 
     }
@@ -104,6 +129,11 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * A partir de unos datos parametro, busca en la base de datos y crea lo necesario para
+     * mostrar por pantalla
+     */
+
     private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
         Cursor paquetes;
         if (destino == null && precio == 0 && valoracion == 0 && duracion == 0){
@@ -120,8 +150,9 @@ public class MainActivity extends ActionBarActivity {
                             paquetes.getString(paquetes.getColumnIndex("nombre")),
                             paquetes.getString(paquetes.getColumnIndex("destino")),
                             paquetes.getInt(paquetes.getColumnIndex("imagen")),
-                            id++
+                            paquetes.getLong(paquetes.getColumnIndex("_id"))
                     ));
+
                 }
             }
         }

@@ -52,13 +52,17 @@ public class PaqueteActivity extends ActionBarActivity {
         precio = (TextView) findViewById(R.id.texto_precio);
         Button botonCompra = (Button) findViewById(R.id.comprar);
 
-        clave = (savedInstanceState == null) ? null :
+
+
+        clave = getIntent().getExtras().getLong("clave");
+
+        /*clave = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(AdaptadorPaquetes.KEY_ROWID);
         if (clave == null) {
             Bundle extras = getIntent().getExtras();
             clave = extras != null ? extras.getLong(AdaptadorPaquetes.KEY_ROWID)
                     : null;
-        }
+        }*/
 
         populateFields();
         final Context c = getBaseContext();
