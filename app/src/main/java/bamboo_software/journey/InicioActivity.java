@@ -8,13 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Clase que se encarga de identificar si los datos indroducidos por el usuario se
+ * corresponden con los almacenados en la BD. Si coinciden, te redirecciona a la clase
+ * InicioPaquetes si el usuario es admin y a MainActivity en el resto de los casos.
+ * Por otro lado, también te puede redireccionar a RegistroActivity si el usuario no
+ * está registrado
+ */
 public class InicioActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_ADMIN = 0;
     private static final int ACTIVITY_CLIENTE = 1;
 
-    private EditText mNickText;
-    private EditText mPassText;
+    private EditText mNickText;         // Nick del usuario
+    private EditText mPassText;         // Contraseña del usuario
 
     private String mRowNick;
     private AdaptadorUsuarios dbHelper;

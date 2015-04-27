@@ -8,16 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Clase que se encarga de administrar los datos indroducidos por el usuario,
+ * almacenándolos en la BD. En caso de que el registro del usuario se halla
+ * realizado correctamente, se redirecciona a la clase MainActivity
+ */
 public class RegistroActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_CLIENTE = 1;
 
-    private EditText mNickText;
-    private EditText mPassText;
-    private EditText mCorreoText;
-    private EditText mTelefonoText;
-    private EditText mNombreText;
-    private EditText mDireccionText;
+    private EditText mNickText;             // Nick del usuario
+    private EditText mPassText;             // Contraseña del usuario
+    private EditText mCorreoText;           // Correo del usuario
+    private EditText mTelefonoText;         // Teléfono del usuario
+    private EditText mNombreText;           // Nombre del usuario
+    private EditText mDireccionText;        // Dirección del usuario
 
     private String mRowCorreo;
     private String mRowNick;
