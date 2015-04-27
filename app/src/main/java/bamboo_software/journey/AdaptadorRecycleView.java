@@ -24,19 +24,21 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        TextView textViewId;
         TextView textViewName;
         TextView textViewInfo;
         ImageView imageViewIcon;
+
 
         //Asocia variables de la clase a cada elemento de los cardViews
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            this.textViewId = (TextView) itemView.findViewById(R.id.cardId);
             this.textViewName = (TextView) itemView.findViewById(R.id.textViewNombre);
             this.textViewInfo = (TextView) itemView.findViewById(R.id.textViewDestino);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.imageView);
         }
-
 
     }
 
@@ -62,10 +64,13 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int listPosition) {
 
+        TextView textViewId = holder.textViewId;
         TextView textViewName = holder.textViewName;
         TextView textViewInfo = holder.textViewInfo;
         ImageView imageView = holder.imageViewIcon;
 
+
+        textViewId.setText(String.valueOf(cardDataSet.get(listPosition).getId()));
         textViewName.setText(cardDataSet.get(listPosition).getName());
         textViewInfo.setText(cardDataSet.get(listPosition).getInfo());
         imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 100, 75));
@@ -77,10 +82,7 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
         return cardDataSet.size();
     }
 
-    public void deleteContent() {
-        cardDataSet.clear();
-        notifyDataSetChanged();
-    }
+
 
     /**
      * Devuelve el numero de veces que hay que reducir la imagen para evitar desbordamientos de memoria de android

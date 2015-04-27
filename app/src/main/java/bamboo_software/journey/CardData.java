@@ -12,9 +12,9 @@ public class CardData {
     String name;
     String info;
     int image;
-    int id_;
+    long id_;
 
-    public CardData(String name, String info, int image,  int id_) {
+    public CardData(String name, String info, int image,  long id_) {
         this.name = name;
         this.info = info;
         this.image = image;
@@ -36,7 +36,7 @@ public class CardData {
         return image;
     }
 
-    public int getId() {
+    public long getId() {
         return id_;
     }
 }

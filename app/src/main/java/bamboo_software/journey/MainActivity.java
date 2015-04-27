@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.util.Log;
+import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,11 +67,14 @@ public class MainActivity extends ActionBarActivity {
         //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.",R.drawable.paris);
         //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.",R.drawable.piramides);
 
-        listarPaquetes (null, 0, 0, 0);
+       listarPaquetes(null, 0, 0, 0);
     }
 
+    /**
+     * Se encarga de lo que ocurre al ser pulsado uno de los CardViews del RecyclerView
+     */
 
-    private static class MyOnClickListener implements View.OnClickListener {
+    private class MyOnClickListener implements View.OnClickListener {
 
         private final Context context;
 
@@ -79,7 +84,28 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onClick(View v) {
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+            RecyclerView.ViewHolder viewHolder
+                    = recyclerView.findViewHolderForPosition(selectedItemPosition);
 
+            TextView textViewName
+                    = (TextView) viewHolder.itemView.findViewById(R.id.cardId);
+            String selectedName = (String) textViewName.getText();
+            long cardId = Long.parseLong(selectedName);
+
+            Intent paqueteIntent = new Intent(MainActivity.this, PaqueteActivity.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putLong("clave", cardId);
+            paqueteIntent.putExtras(mBundle);
+
+            /*adPaquetes.listarPaquete(cardId);
+
+            Cursor cur = adPaquetes.listarPaquete(cardId);
+            startManagingCursor(cur);
+            System.out.println(cur.getString(cur.getColumnIndex(adPaquetes.KEY_NOMBRE)));
+
+            System.out.println(cardId);*/
+            MainActivity.this.startActivity(paqueteIntent);
         }
 
     }
@@ -93,14 +119,20 @@ public class MainActivity extends ActionBarActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SEARCH_ACTIVITY && resultCode == RESULT_OK) {
+            Log.d("SEARCH","Ha vuelto correctamente");
             Bundle extras = data.getExtras();
             String destino = (String) extras.get(SEARCH_DESTINO);
-            int duracion = (int) extras.get(SEARCH_DURACION);
-            float precio = (float) extras.get(SEARCH_PRECIO);
-            float valoracion = (float) extras.get(SEARCH_VALORACION);
+            int duracion = extras.getInt(SEARCH_DURACION);
+            float precio = extras.getFloat(SEARCH_PRECIO);
+            float valoracion = extras.getFloat(SEARCH_VALORACION);
             listarPaquetes(destino, duracion, precio, valoracion);
         }
     }
+
+    /**
+     * A partir de unos datos parametro, busca en la base de datos y crea lo necesario para
+     * mostrar por pantalla
+     */
 
     private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
         Cursor paquetes;
@@ -113,13 +145,20 @@ public class MainActivity extends ActionBarActivity {
         cards = new ArrayList<CardData>();
         if(paquetes!=null) {
             if (paquetes.moveToFirst()) {
+                cards.add(new CardData(
+                        paquetes.getString(paquetes.getColumnIndex("nombre")),
+                        paquetes.getString(paquetes.getColumnIndex("destino")),
+                        paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                        paquetes.getLong(paquetes.getColumnIndex("_id"))
+                ));
                 while (paquetes.moveToNext()) {
                     cards.add(new CardData(
                             paquetes.getString(paquetes.getColumnIndex("nombre")),
                             paquetes.getString(paquetes.getColumnIndex("destino")),
                             paquetes.getInt(paquetes.getColumnIndex("imagen")),
-                            id++
+                            paquetes.getLong(paquetes.getColumnIndex("_id"))
                     ));
+
                 }
             }
         }
@@ -134,14 +173,10 @@ public class MainActivity extends ActionBarActivity {
         switch (item.getItemId()){
             //boton de filtro-busqueda
             case R.id.action_filter:
-                Intent i = new Intent(
-                Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-
-                /*
+                Log.d("SEARCH","Lanzando Search Activity");
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
-                MainActivity.this.startActivity(filterIntent);
-                return true;*/
+                MainActivity.this.startActivityForResult(filterIntent, SEARCH_ACTIVITY);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
