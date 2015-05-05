@@ -44,16 +44,6 @@ public class RegistroActivity extends ActionBarActivity {
         
         Button botonConfirmar = (Button) findViewById(R.id.confirmar);
 
-        /* mRowNick = (savedInstanceState == null) ? "" :
-                (String) savedInstanceState.getSerializable(AdaptadorUsuarios.KEY_NICK);
-        if (mRowNick.equals("")) {
-            Bundle extras = getIntent().getExtras();
-                mRowNick = extras != null ? extras.getString(AdaptadorUsuarios.KEY_NICK)
-                    : "";
-        }
-
-        poblarCampos(); */
-
         botonConfirmar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 boolean registrado = RegistroActivity.this.registrarUsuario();
@@ -74,7 +64,6 @@ public class RegistroActivity extends ActionBarActivity {
     private void poblarCampos() {
         if (!mRowNick.equals("")) {
             Cursor usuario = dbHelper.listarUsuarioNick(mNickText.getText().toString());
-            //startManagingCursor(usuario);
             mNickText.setText(usuario.getString(
             		usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_NICK)));
             mPassText.setText(usuario.getString(
@@ -120,28 +109,13 @@ public class RegistroActivity extends ActionBarActivity {
         Cursor usuarioCorreo = dbHelper.listarUsuario(correo);
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
-        /* if (mRowNick.equals("")) { */
-            if (usuarioCorreo != null && !usuarioCorreo.moveToFirst() && usuarioNick != null &&
-                    !usuarioNick.moveToFirst() && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
-                    !nombre.equals("") && !direccion.equals("") && !pass.equals("") && telefono != -1) {
-                long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
-                registrado = true;
-                /*if (resultado > 0) {
-                    mRowNick = nick;
-                }*/
-            }
-        /* }
-        else {
-            if (!mRowCorreo.equals(correo) || !mRowNick.equals(nick)) {
-                if (usuarioCorreo == null && usuarioNick == null) {
-                    dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
-                    mRowCorreo = correo;
-                }
-            }
-            else {
-                dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
-            }
-        } */
+        if (usuarioCorreo != null && !usuarioCorreo.moveToFirst() && usuarioNick != null &&
+                !usuarioNick.moveToFirst() && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
+                !nombre.equals("") && !direccion.equals("") && !pass.equals("") && telefono != -1) {
+            long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
+            registrado = true;
+        }
+
         dbHelper.close();
         return registrado;
     }
