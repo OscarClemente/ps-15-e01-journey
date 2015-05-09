@@ -1,6 +1,7 @@
 package bamboo_software.journey;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +20,7 @@ public class InicioActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_ADMIN = 0;
     private static final int ACTIVITY_CLIENTE = 1;
+    private static final String USUARIO = "CorreoUsuario";
 
     private EditText mNickText;         // Nick del usuario
     private EditText mPassText;         // Contraseña del usuario
@@ -71,6 +73,7 @@ public class InicioActivity extends ActionBarActivity {
         if (usuario != null && usuario.moveToFirst()) {
             String nick = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_NICK));
             String pass = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_PASS));
+            String correo = usuario.getString(usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_CORREO));
 
             if (nickIntroducido.equals(nick) && passIntroducido.equals(pass)) {
                 mRowNick = nick;
@@ -78,6 +81,7 @@ public class InicioActivity extends ActionBarActivity {
                     Intent i = new Intent(this, InicioPaquetes.class);
                     startActivityForResult(i, ACTIVITY_ADMIN);
                 } else {
+                    actualizarPrefsUsuario(correo);
                     Intent i = new Intent(this, MainActivity.class);
                     startActivityForResult(i, ACTIVITY_CLIENTE);
                 }
@@ -87,6 +91,12 @@ public class InicioActivity extends ActionBarActivity {
             usuario.close();
         }
         dbHelper.close();
+    }
+
+    private void actualizarPrefsUsuario(String correo) {
+        SharedPreferences prefsCorreo = getSharedPreferences(USUARIO, 0);
+        SharedPreferences.Editor editor = prefsCorreo.edit();
+        editor.putString("correo", correo);
     }
 
 }

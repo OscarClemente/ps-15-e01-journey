@@ -107,17 +107,16 @@ public class AdaptadorCompras {
     /**
      * Devuelve un Cursor colocado en la compra que coincide con la id y correo dados
      *
-     * @param id     id del paquete de la compra a recuperar
      * @param correo correo del usuario de la compra a recuperar
      * @return Cursor colocado en la compra deseada si esta
      * @throws SQLException si no se puede encontrar
      */
-    public Cursor listarCompra(long id, String correo) throws SQLException {
+    public Cursor listarCompra(String correo) throws SQLException {
 
         Cursor mCursor =
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_ID, KEY_FECHA},
-                        KEY_ID + "=" + id + "AND" + KEY_CORREO + "=" + correo,
+                        KEY_CORREO + "=" + correo,
                         null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();

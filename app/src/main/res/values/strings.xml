@@ -25,4 +25,7 @@
 
     <string name="action_filter">Filtrar</string>
     <string name="MenuAdministrador">Menu de Administrador</string>
+
+    <string name="ver_info">Ver mas informacion</string>
+    <string name="reenviar">Reenviar factura</string>
 </resources>
