@@ -1,12 +1,15 @@
 package bamboo_software.journey;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * La clase CompraActivity se corresponde con la pantalla de la
@@ -14,7 +17,7 @@ import android.view.View;
  * por el usuario. Se accede a ella mediante un boton del menu superior
  * de la pantalla de MainActivity.
  */
-public class CompraActivity extends ActionBarActivity {
+public class CompraActivity extends ListActivity {
 
     private static final String USUARIO = "CorreoUsuario";
     private static final int VER_INFO = 0;
@@ -35,19 +38,32 @@ public class CompraActivity extends ActionBarActivity {
         setContentView(R.layout.activity_compras);  //Rellenar xml
 
         adCompras.open();
-        listarPaquetes();
+        fillData();
     }
 
     /**
      * Obtiene de la base de datos un listado con todas las compras que
      * ha realizado el usuario, y lo muestra por pantalla.
      */
-    private void listarPaquetes() {
+    private void fillData() {
         String correo = getUsuario();
         /* Comprueba que se ha almacenado el correo del usuario */
         if (correo != null) {
-            Cursor compras = adCompras.listarCompra(correo);
+            Cursor cursorCompras = adCompras.listarCompra(correo);
             //Mostrar compras a partir del cursor
+
+            /*Create an array to specify the fields we want to display in the
+              list ( Id, correo, fecha y personas)*/
+            String[] from = new String[]{AdaptadorCompras.KEY_NOMBRE,AdaptadorCompras.KEY_FECHA,
+                    AdaptadorCompras.KEY_PERSONAS};
+
+            // and an array of the fields we want to bind those fields to (in this case just text1)
+            int[] to = new int[]{R.id.textTitulo,R.id.textFecha,R.id.textPersonas};
+
+            // Now create a simple cursor adapter and set it to display
+            SimpleCursorAdapter compras =
+                    new SimpleCursorAdapter(this, R.layout.fila_compras, cursorCompras, from, to, 1);
+            setListAdapter(compras);
         }
     }
 
@@ -78,7 +94,16 @@ public class CompraActivity extends ActionBarActivity {
         switch(item.getItemId()) {
             case VER_INFO:
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                //Llamar a PaqueteActivity
+                TextView textViewName
+                        = (TextView) findViewById(R.id.textID);
+                String selectedName = (String) textViewName.getText();
+                long cardId = Long.parseLong(selectedName);
+
+                Intent paqueteIntent = new Intent(this, PaqueteActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putLong("clave", cardId);
+                paqueteIntent.putExtras(mBundle);
+                this.startActivity(paqueteIntent);
                 return true;
             case REENVIAR:
                 //Llamar al modulo de mail

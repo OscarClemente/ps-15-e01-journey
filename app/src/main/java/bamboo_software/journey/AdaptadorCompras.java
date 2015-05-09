@@ -11,9 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class AdaptadorCompras {
 
+    public static final String KEY_ID = "id";
+    public static final String KEY_NOMBRE = "nombre";
     public static final String KEY_CORREO = "correo";
     public static final String KEY_FECHA = "fecha";
-    public static final String KEY_ID = "id";
+    public static final String KEY_PERSONAS = "personas";
+
 
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
@@ -61,16 +64,18 @@ public class AdaptadorCompras {
      * @param fecha  la fecha de compra
      * @return rowId o -1 si falla
      */
-    public long crearCompra(long id, String correo, String fecha) {
+    public long crearCompra(long id, String nombre, String correo, String fecha, int personas) {
         try {
             if (correo.equals("")) {
                 return -1;
             }
 
             ContentValues valoresIniciales = new ContentValues();
-            valoresIniciales.put(KEY_CORREO, correo);
             valoresIniciales.put(KEY_ID, id);
+            valoresIniciales.put(KEY_NOMBRE, nombre);
+            valoresIniciales.put(KEY_CORREO, correo);
             valoresIniciales.put(KEY_FECHA, fecha);
+            valoresIniciales.put(KEY_PERSONAS, personas);
 
             return mDb.insert(DATABASE_TABLE, null, valoresIniciales);
         } catch (Throwable e) {
@@ -100,8 +105,8 @@ public class AdaptadorCompras {
      */
     public Cursor listarCompras() {
 
-        return mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO,
-                KEY_ID, KEY_FECHA}, null, null, null, null, KEY_ID);
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
+                KEY_FECHA, KEY_PERSONAS}, null, null, null, null, KEY_ID);
     }
 
     /**
@@ -115,8 +120,8 @@ public class AdaptadorCompras {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_CORREO, KEY_ID, KEY_FECHA},
-                        KEY_CORREO + "=" + correo,
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
+                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "=" + correo,
                         null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -134,16 +139,18 @@ public class AdaptadorCompras {
      * @param fecha  la fecha de compra
      * @return rowId o -1 si falla
      */
-    public boolean actualizarUsuario(long id, String correo, String fecha) {
+    public boolean actualizarUsuario(long id, String nombre, String correo, String fecha, int personas) {
         try {
             if (correo.equals("")) {
                 return false;
             }
 
             ContentValues args = new ContentValues();
-            args.put(KEY_CORREO, correo);
             args.put(KEY_ID, id);
+            args.put(KEY_NOMBRE, nombre);
+            args.put(KEY_CORREO, correo);
             args.put(KEY_FECHA, fecha);
+            args.put(KEY_PERSONAS, personas);
 
             return mDb.update(DATABASE_TABLE, args,
                     KEY_ID + "=" + id + "AND" + KEY_CORREO + "=" + correo, null) > 0;
