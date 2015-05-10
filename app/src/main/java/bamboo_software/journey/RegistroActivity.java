@@ -1,6 +1,7 @@
 package bamboo_software.journey;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 public class RegistroActivity extends ActionBarActivity {
 
     private static final int ACTIVITY_CLIENTE = 1;
+    private static final String USUARIO = "CorreoUsuario";
 
     private EditText mNickText;             // Nick del usuario
     private EditText mPassText;             // Contraseña del usuario
@@ -24,6 +26,7 @@ public class RegistroActivity extends ActionBarActivity {
     private EditText mNombreText;           // Nombre del usuario
     private EditText mDireccionText;        // Dirección del usuario
 
+    private String correo;
     private String mRowCorreo;
     private String mRowNick;
     private AdaptadorUsuarios dbHelper;
@@ -44,27 +47,25 @@ public class RegistroActivity extends ActionBarActivity {
         
         Button botonConfirmar = (Button) findViewById(R.id.confirmar);
 
-        /* mRowNick = (savedInstanceState == null) ? "" :
-                (String) savedInstanceState.getSerializable(AdaptadorUsuarios.KEY_NICK);
-        if (mRowNick.equals("")) {
-            Bundle extras = getIntent().getExtras();
-                mRowNick = extras != null ? extras.getString(AdaptadorUsuarios.KEY_NICK)
-                    : "";
-        }
-
-        poblarCampos(); */
-
         botonConfirmar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 boolean registrado = RegistroActivity.this.registrarUsuario();
-                // Si el usuario se ha registrado correctamente, se redirije a MainActivity
+                // Si el usuario se ha registrado correctamente, se redirige a MainActivity
                 if (registrado) {
+                    actualizarPrefsUsuario();
+
                     Intent i = new Intent(RegistroActivity.this, MainActivity.class);
                     RegistroActivity.this.startActivityForResult(i, ACTIVITY_CLIENTE);
                 }
             }
 
         });
+    }
+
+    private void actualizarPrefsUsuario() {
+        SharedPreferences prefsCorreo = getSharedPreferences(USUARIO, 0);
+        SharedPreferences.Editor editor = prefsCorreo.edit();
+        editor.putString("correo", correo);
     }
 
     /*
@@ -74,7 +75,6 @@ public class RegistroActivity extends ActionBarActivity {
     private void poblarCampos() {
         if (!mRowNick.equals("")) {
             Cursor usuario = dbHelper.listarUsuarioNick(mNickText.getText().toString());
-            //startManagingCursor(usuario);
             mNickText.setText(usuario.getString(
             		usuario.getColumnIndexOrThrow(AdaptadorUsuarios.KEY_NICK)));
             mPassText.setText(usuario.getString(
@@ -105,7 +105,7 @@ public class RegistroActivity extends ActionBarActivity {
 
         String nick = mNickText.getText().toString();
         String pass = mPassText.getText().toString();
-        String correo = mCorreoText.getText().toString();
+        correo = mCorreoText.getText().toString();
         String nombre = mNombreText.getText().toString();
         String direccion = mDireccionText.getText().toString();
         int telefono;
@@ -120,28 +120,13 @@ public class RegistroActivity extends ActionBarActivity {
         Cursor usuarioCorreo = dbHelper.listarUsuario(correo);
         Cursor usuarioNick = dbHelper.listarUsuarioNick(nick);
 
-        /* if (mRowNick.equals("")) { */
-            if (usuarioCorreo != null && !usuarioCorreo.moveToFirst() && usuarioNick != null &&
-                    !usuarioNick.moveToFirst() && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
-                    !nombre.equals("") && !direccion.equals("") && !pass.equals("") && telefono != -1) {
-                long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
-                registrado = true;
-                /*if (resultado > 0) {
-                    mRowNick = nick;
-                }*/
-            }
-        /* }
-        else {
-            if (!mRowCorreo.equals(correo) || !mRowNick.equals(nick)) {
-                if (usuarioCorreo == null && usuarioNick == null) {
-                    dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
-                    mRowCorreo = correo;
-                }
-            }
-            else {
-                dbHelper.actualizarUsuario(correo, nick, nombre, direccion, pass, telefono);
-            }
-        } */
+        if (usuarioCorreo != null && !usuarioCorreo.moveToFirst() && usuarioNick != null &&
+                !usuarioNick.moveToFirst() && !correo.equals("") && correo.contains("@") && !nick.equals("") &&
+                !nombre.equals("") && !direccion.equals("") && !pass.equals("") && telefono != -1) {
+            long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
+            registrado = true;
+        }
+
         dbHelper.close();
         return registrado;
     }

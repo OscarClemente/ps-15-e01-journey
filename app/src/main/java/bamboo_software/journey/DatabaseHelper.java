@@ -17,11 +17,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "nombre text not null, destino text not null,"
                     + "precio integer not null,"
                     + "duracion integer not null, calificacion integer not null,"
-                    + "descripcion text not null, imagen integer not null);";
+                    + "descripcion text not null, imagen text not null);";
 
     private static final String DATABASE_CREATE2 =
-            "create table comprar (id integer not null, "
+            "create table comprar (id integer not null, nombre text not null, "
                     + "correo text not null, fecha text not null,"
+                    + "personas integer not null, "
                     + "FOREIGN KEY(id) REFERENCES paquete(_id),"
                     + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
                     + "PRIMARY KEY(id, correo));";
@@ -39,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "AdaptadorBD";
     private static final String DATABASE_NAME = "journey";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

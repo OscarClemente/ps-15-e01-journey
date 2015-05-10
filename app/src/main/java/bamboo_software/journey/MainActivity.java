@@ -35,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
     protected static final int RESULT_LOAD_IMAGE = 1;
 
     private static final int SEARCH_ACTIVITY = 0;
+    private static final int COMPRA_ACTIVITY = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,26 +137,25 @@ public class MainActivity extends ActionBarActivity {
 
     private void listarPaquetes(String destino, int duracion, float precio, float valoracion) {
         Cursor paquetes;
-        if (destino == null && precio == 0 && valoracion == 0 && duracion == 0){
+        if (destino == null && precio == 0 && valoracion == 0 && duracion == 0) {
             paquetes = adPaquetes.listarPaquetes();
-        }
-        else {
+        } else {
             paquetes = adPaquetes.listarPaquetes(destino, duracion, precio, valoracion);
         }
         cards = new ArrayList<CardData>();
-        if(paquetes!=null) {
+        if (paquetes != null) {
             if (paquetes.moveToFirst()) {
                 cards.add(new CardData(
                         paquetes.getString(paquetes.getColumnIndex("nombre")),
                         paquetes.getString(paquetes.getColumnIndex("destino")),
-                        paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                        paquetes.getString(paquetes.getColumnIndex("imagen")),
                         paquetes.getLong(paquetes.getColumnIndex("_id"))
                 ));
                 while (paquetes.moveToNext()) {
                     cards.add(new CardData(
                             paquetes.getString(paquetes.getColumnIndex("nombre")),
                             paquetes.getString(paquetes.getColumnIndex("destino")),
-                            paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                            paquetes.getString(paquetes.getColumnIndex("imagen")),
                             paquetes.getLong(paquetes.getColumnIndex("_id"))
                     ));
 
@@ -166,8 +166,6 @@ public class MainActivity extends ActionBarActivity {
         recyclerView.setAdapter(adapter);
     }
 
-
-
     public boolean onOptionsItemSelected(MenuItem item) {
         //Controla la accion de los botones del menu superior
         switch (item.getItemId()){
@@ -176,6 +174,10 @@ public class MainActivity extends ActionBarActivity {
                 Log.d("SEARCH","Lanzando Search Activity");
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
                 MainActivity.this.startActivityForResult(filterIntent, SEARCH_ACTIVITY);
+                return true;
+            case R.id.compras:
+                Intent comprasIntent = new Intent(MainActivity.this, CompraActivity.class);
+                MainActivity.this.startActivityForResult(comprasIntent, COMPRA_ACTIVITY);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

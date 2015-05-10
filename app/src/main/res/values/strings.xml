@@ -15,6 +15,7 @@
     <string name="duracion">Duración</string>
     <string name="descripcion">Descripción</string>
     <string name="calificacion">Calificación</string>
+    <string name="imagen">Imagen</string>
     <string name="destino">Destino</string>
     <string name="confirm">Confirmar</string>
     <string name="no_paquetes">No hay Paquetes</string>
@@ -31,4 +32,9 @@
 
     <string name="action_filter">Filtrar</string>
     <string name="MenuAdministrador">Menu de Administrador</string>
+
+    <string name="ver_info">Ver mas informacion</string>
+    <string name="reenviar">Reenviar factura</string>
+    <string name="compras">Compras</string>
 </resources>
+
