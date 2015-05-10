@@ -73,7 +73,8 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
         textViewId.setText(String.valueOf(cardDataSet.get(listPosition).getId()));
         textViewName.setText(cardDataSet.get(listPosition).getName());
         textViewInfo.setText(cardDataSet.get(listPosition).getInfo());
-        imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 100, 75));
+        //imageView.setImageBitmap(decodeSampledBitmapFromResource(resource, cardDataSet.get(listPosition).getImage(), 100, 75));
+        imageView.setImageBitmap(decodeSampledBitmapFromFile(cardDataSet.get(listPosition).getImage(), 200, 50));
 
     }
 
@@ -127,6 +128,20 @@ public class AdaptadorRecycleView extends RecyclerView.Adapter<AdaptadorRecycleV
         // Decodificar la imagen
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public static Bitmap decodeSampledBitmapFromFile(String image, int reqWidth, int reqHeight){
+        // Preparar para testear tamaño de la imagen
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(image, options);
+
+        // Calculate reduccion de la imagen
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decodificar la imagen
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(image, options);
     }
 }
 
