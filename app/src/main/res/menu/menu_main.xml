@@ -7,6 +7,10 @@
         android:title="@string/action_filter"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/compras"
+        android:icon="@drawable/compras"
+        android:title="@string/compras"
+        app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />

@@ -28,4 +28,6 @@
 
     <string name="ver_info">Ver mas informacion</string>
     <string name="reenviar">Reenviar factura</string>
+    <string name="compras">Compras</string>
 </resources>
+
