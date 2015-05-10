@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/vista_foto_paquete"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:contentDescription="@string/sample_text_image"

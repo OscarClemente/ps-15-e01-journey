@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "nombre text not null, destino text not null,"
                     + "precio integer not null,"
                     + "duracion integer not null, calificacion integer not null,"
-                    + "descripcion text not null, imagen integer not null);";
+                    + "descripcion text not null, imagen text not null);";
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (id integer not null, "
@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "AdaptadorBD";
     private static final String DATABASE_NAME = "journey";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -19,9 +19,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="120dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:contentDescription="@string/sample_text_image"
             android:layout_gravity="top"
             android:src="@drawable/android"

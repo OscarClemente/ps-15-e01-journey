@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,10 +13,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static bamboo_software.journey.AdaptadorRecycleView.decodeSampledBitmapFromFile;
 
 
 public class PaqueteActivity extends ActionBarActivity {
@@ -29,6 +33,7 @@ public class PaqueteActivity extends ActionBarActivity {
     private TextView descripcion;
     private TextView precio;
     private RatingBar nota;
+    ImageView imageViewIcon;
 
     private Long clave;
 
@@ -50,6 +55,7 @@ public class PaqueteActivity extends ActionBarActivity {
         descripcion = (TextView) findViewById(R.id.texto_descripcion);
         nota = (RatingBar) findViewById(R.id.nota);
         precio = (TextView) findViewById(R.id.texto_precio);
+        imageViewIcon = (ImageView) findViewById(R.id.vista_foto_paquete);
         Button botonCompra = (Button) findViewById(R.id.comprar);
 
 
@@ -96,6 +102,8 @@ public class PaqueteActivity extends ActionBarActivity {
             descripcion.setText(cur.getString(cur.getColumnIndex(db.KEY_DESCRIPCION)));
             nota.setRating(cur.getInt(cur.getColumnIndex(db.KEY_CALIFICACION)));
             precio.setText(Integer.toString(cur.getInt(cur.getColumnIndex(db.KEY_PRECIO))));
+            Bitmap imagen = decodeSampledBitmapFromFile((cur.getString(cur.getColumnIndex(db.KEY_IMAGEN))), 200, 200);
+            imageViewIcon.setImageBitmap(imagen);
     }
 
 

@@ -78,7 +78,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public long crearPaquete(String nombre, String destino, int precio, int duracion,
-                             int calificacion, String descripcion, int imagen) {
+                             int calificacion, String descripcion, String imagen) {
         try {
             if (nombre.equals("")) {
                 return -1;
@@ -186,7 +186,7 @@ public class AdaptadorPaquetes {
      * @return rowId o -1 si falla
      */
     public boolean actualizarPaquete(long rowId, String nombre, String destino, int precio, int duracion, int calificacion,
-                                     String descripcion, int imagen) {
+                                     String descripcion, String imagen) {
         try {
             if (nombre.equals("")) {
                 return false;
@@ -227,7 +227,7 @@ public class AdaptadorPaquetes {
                             cur.getInt(cur.getColumnIndex(KEY_DURACION)),
                             cur.getInt(cur.getColumnIndex(KEY_CALIFICACION)),
                             cur.getString(cur.getColumnIndex(KEY_DESCRIPCION)),
-                            cur.getInt(cur.getColumnIndex(KEY_IMAGEN))
+                            cur.getString(cur.getColumnIndex(KEY_IMAGEN))
                     )
             );
         }

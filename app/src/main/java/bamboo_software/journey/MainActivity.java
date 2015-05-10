@@ -148,14 +148,14 @@ public class MainActivity extends ActionBarActivity {
                 cards.add(new CardData(
                         paquetes.getString(paquetes.getColumnIndex("nombre")),
                         paquetes.getString(paquetes.getColumnIndex("destino")),
-                        paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                        paquetes.getString(paquetes.getColumnIndex("imagen")),
                         paquetes.getLong(paquetes.getColumnIndex("_id"))
                 ));
                 while (paquetes.moveToNext()) {
                     cards.add(new CardData(
                             paquetes.getString(paquetes.getColumnIndex("nombre")),
                             paquetes.getString(paquetes.getColumnIndex("destino")),
-                            paquetes.getInt(paquetes.getColumnIndex("imagen")),
+                            paquetes.getString(paquetes.getColumnIndex("imagen")),
                             paquetes.getLong(paquetes.getColumnIndex("_id"))
                     ));
 
