@@ -52,6 +52,7 @@
         <activity android:name=".InicioPaquetes" />
         <activity android:name=".EditarPaquetes" />
         <activity android:name=".CompraActivity" />
+        <activity android:name=".DatosCompraActivity" />
     </application>
 
 </manifest>
