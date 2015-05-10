@@ -1,14 +1,11 @@
 package bamboo_software.journey;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
@@ -73,25 +70,14 @@ public class PaqueteActivity extends ActionBarActivity {
         populateFields();
         final Context c = getBaseContext();
         botonCompra.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
-                Intent i = new Intent(c, CompraActivity.class);
-                i.putExtra(AdaptadorPaquetes.KEY_ROWID, clave);
-                startActivityForResult(i, 0);
+                Intent i = new Intent(c, DatosCompraActivity.class);
+                i.putExtra("clave", clave);
+                startActivity(i);
             }
 
         });
 
-        /*confirmButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra(CAT, catId);
-                setResult(RESULT_OK, resultIntent);
-                finish();
-            }
-
-        });*/
     }
 
     private void populateFields() {

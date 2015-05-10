@@ -3,12 +3,15 @@ package bamboo_software.journey;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by Daniel on 05/05/2015.
@@ -22,6 +25,9 @@ public class DatosCompraActivity extends Activity {
     private static final String USUARIO = "CorreoUsuario";
     private AdaptadorUsuarios usuarioDbHelper;
     private AdaptadorCompras compraDbHelper;
+    private AdaptadorPaquetes paqueteDbHelper;
+
+    private long clave;
 
 
     @Override
@@ -33,18 +39,32 @@ public class DatosCompraActivity extends Activity {
         compraDbHelper.open();
         usuarioDbHelper = new AdaptadorUsuarios(this);
         usuarioDbHelper.open();
+        paqueteDbHelper = new AdaptadorPaquetes(this);
+        paqueteDbHelper.open();
 
         setTitle("Finalizar Compra");
 
         mTarjeta = (EditText) findViewById(R.id.tarjeta);
         mPersonas = (EditText) findViewById(R.id.personas);
         mPagador = (EditText) findViewById(R.id.pagador);
-        String personas = mPersonas.getText().toString();
+
+
+        clave = getIntent().getExtras().getLong("clave");
 
         Button comprar = (Button) findViewById(R.id.comprar);
         comprar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //compraDbHelper.crearCompra(i,getUsuario(),getdate(),);
+                /* Se consigue el nombre del paquete*/
+                Cursor crs = paqueteDbHelper.listarPaquete(clave);
+                crs.moveToFirst();
+                /* Se consigue el numero de personas*/
+                int personas = Integer.parseInt(mPersonas.getText().toString());
+                /* Se consigue la fecha actual*/
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                String fecha = df.format(c.getTime());
+                /* Se crea la compra en la base de datos*/
+                compraDbHelper.crearCompra(clave, crs.getString(crs.getColumnIndex("nombre")),getUsuario(),fecha,personas);
                 String[] to = { getUsuario() };
                 enviar(to, "Listado de Compra", "Este es el listado de tu compra"+compraDbHelper.listarCompras());
                 setResult(RESULT_OK);
