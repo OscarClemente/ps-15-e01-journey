@@ -66,6 +66,7 @@ public class RegistroActivity extends ActionBarActivity {
         SharedPreferences prefsCorreo = getSharedPreferences(USUARIO, 0);
         SharedPreferences.Editor editor = prefsCorreo.edit();
         editor.putString("correo", correo);
+        editor.commit();
     }
 
     /*
