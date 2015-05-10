@@ -24,6 +24,12 @@
     <string name="menu_borrar">Borrar Paquete</string>
     <string name="menu_listar_paquetes">Lista de Paquetes</string>
 
+    <string name="tarjeta">Tarjeta</string>
+    <string name="personas">Nº personas</string>
+    <string name="pagador">Nombre pagador</string>
+    <string name="comprar">Comprar</string>
+    <string name="pass">Contraseña del Correo</string>
+
     <string name="action_filter">Filtrar</string>
     <string name="MenuAdministrador">Menu de Administrador</string>
 
