@@ -54,49 +54,29 @@ public class DatosCompraActivity extends Activity {
         Button comprar = (Button) findViewById(R.id.comprar);
         comprar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                /* Se consigue el nombre del paquete*/
+                /* Se consigue el nombre del paquete y el numero de personas */
                 Cursor crs = paqueteDbHelper.listarPaquete(clave);
                 crs.moveToFirst();
-                /* Se consigue el numero de personas*/
                 int personas = Integer.parseInt(mPersonas.getText().toString());
+
                 /* Se consigue la fecha actual*/
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String fecha = df.format(c.getTime());
+
                 /* Se crea la compra en la base de datos*/
-                compraDbHelper.crearCompra(clave, crs.getString(crs.getColumnIndex("nombre")),getUsuario(),fecha,personas);
-                String[] to = { getUsuario() };
-                enviar(to, "Listado de Compra", "Este es el listado de tu compra"+compraDbHelper.listarCompras());
+                String titulo = crs.getString(crs.getColumnIndex("nombre"));
+                compraDbHelper.crearCompra(clave, titulo, getUsuario(), fecha, personas);
+
+                /* Envia el mail */
+
+                Mail mail = new Mail(DatosCompraActivity.this, titulo, personas, fecha);
+                mail.enviar(getUsuario());
+
                 setResult(RESULT_OK);
                 //finish();
             }
         });
-    }
-
-    private void enviar(String[] to, String asunto, String mensaje) {
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
-        //emailIntent.putExtra(Intent.EXTRA_CC, cc);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, asunto);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
-        emailIntent.setType("message/rfc822");
-        startActivity(Intent.createChooser(emailIntent, "Enviar Email"));
-        /*JavaMail m = new JavaMail(from, to, user, password
-                ,"smtp.gmail.com", "465", "465"
-                ,asunto, mensaje);
-        try {
-
-            if(m.send()) {
-                //A toast is a view containing a quick little message for the user
-                Toast.makeText(this, "Mensaje enviado correctamente", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Mensaje no enviado", Toast.LENGTH_SHORT).show();
-            }
-        } catch(Exception e) {
-            Toast.makeText(this, "Se produjo una excepción al enviar mensaje", Toast.LENGTH_SHORT).show();
-            android.util.Log.d("EnviarCorreo", "Se produjo una excepción: " + e.getMessage());
-        }*/
     }
 
     private String getUsuario() {
