@@ -54,12 +54,12 @@ public class DatosCompraActivity extends Activity {
         Button comprar = (Button) findViewById(R.id.comprar);
         comprar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                /* Se consigue el nombre del paquete y el numero de personas */
+                /* Se obtiene el nombre del paquete y el numero de personas */
                 Cursor crs = paqueteDbHelper.listarPaquete(clave);
                 crs.moveToFirst();
                 int personas = Integer.parseInt(mPersonas.getText().toString());
 
-                /* Se consigue la fecha actual*/
+                /* Se obtiene la fecha actual */
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String fecha = df.format(c.getTime());
@@ -69,7 +69,6 @@ public class DatosCompraActivity extends Activity {
                 compraDbHelper.crearCompra(clave, titulo, getUsuario(), fecha, personas);
 
                 /* Envia el mail */
-
                 Mail mail = new Mail(DatosCompraActivity.this, titulo, personas, fecha);
                 mail.enviar(getUsuario());
 

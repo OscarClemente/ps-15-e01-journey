@@ -33,9 +33,8 @@ public class CompraActivity extends ListActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Faltan cosas posiblemente
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compras);  //Rellenar xml
+        setContentView(R.layout.activity_compras);
 
         adCompras.open();
         fillData();
@@ -91,22 +90,40 @@ public class CompraActivity extends ListActivity {
      */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        TextView textViewName;
+        String selectedName;
+        long id;
         switch(item.getItemId()) {
             case VER_INFO:
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                TextView textViewName
-                        = (TextView) findViewById(R.id.textID);
-                String selectedName = (String) textViewName.getText();
-                long cardId = Long.parseLong(selectedName);
+                /* Obtiene la id del paquete */
+                textViewName = (TextView) findViewById(R.id.textID);
+                selectedName = (String) textViewName.getText();
+                id = Long.parseLong(selectedName);
 
                 Intent paqueteIntent = new Intent(this, PaqueteActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putLong("clave", cardId);
+                mBundle.putLong("clave", id);
                 paqueteIntent.putExtras(mBundle);
                 this.startActivity(paqueteIntent);
                 return true;
             case REENVIAR:
-                //Llamar al modulo de mail
+                /* Obtiene la id del paquete */
+                textViewName = (TextView) findViewById(R.id.textID);
+                selectedName = (String) textViewName.getText();
+                id = Long.parseLong(selectedName);
+
+                /* Se obtiene la compra de la base de datos */
+                Cursor crs = adCompras.listarCompra(getUsuario(), id);
+                crs.moveToFirst();
+                String titulo = crs.getString(crs.getColumnIndex("nombre"));
+                int personas = Integer.parseInt(crs.getString(crs.getColumnIndex("personas")));
+                String fecha = crs.getString(crs.getColumnIndex("fecha"));
+
+                /* Envia el mail */
+                Mail mail = new Mail(CompraActivity.this, titulo, personas, fecha);
+                mail.enviar(getUsuario());
+
                 return true;
         }
         return super.onContextItemSelected(item);

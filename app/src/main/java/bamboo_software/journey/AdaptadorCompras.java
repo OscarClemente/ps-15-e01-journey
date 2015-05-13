@@ -99,6 +99,19 @@ public class AdaptadorCompras {
     }
 
     /**
+     * Borrar todas las compras
+     *
+     * @return true si se ha borrado, false de otra manera
+     */
+    public boolean borrarCompras() {
+        try {
+            return mDb.delete(DATABASE_TABLE, null, null) > 0;
+        } catch (Throwable e) {
+            return false;
+        }
+    }
+
+    /**
      * Devuelve un Cursor sobre la lista de todas las compras de la base de datos
      *
      * @return Cursor sobre todas las compras
@@ -110,7 +123,7 @@ public class AdaptadorCompras {
     }
 
     /**
-     * Devuelve un Cursor colocado en la compra que coincide con la id y correo dados
+     * Devuelve un Cursor colocado en la compra que coincide con el correo dado
      *
      * @param correo correo del usuario de la compra a recuperar
      * @return Cursor colocado en la compra deseada si esta
@@ -122,6 +135,28 @@ public class AdaptadorCompras {
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
                                 KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "=" + correo,
+                        null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
+    /**
+     * Devuelve un Cursor colocado en la compra que coincide con la id y correo dados
+     *
+     * @param correo correo del usuario de la compra a recuperar
+     * @return Cursor colocado en la compra deseada si esta
+     * @throws SQLException si no se puede encontrar
+     */
+    public Cursor listarCompra(String correo, long id) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
+                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "=" + correo + " AND " +
+                                KEY_ID + "=" + id,
                         null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();

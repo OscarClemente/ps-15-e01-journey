@@ -56,6 +56,11 @@ public class InicioActivity extends ActionBarActivity {
             }
 
         });
+
+        //CODIGO DE TEST
+        //AdaptadorUsuarios adUsuarios = new AdaptadorUsuarios(this);
+        //adUsuarios.open();
+        //adUsuarios.crearUsuario("test", "test", "test", "test", "test", 1234);
     }
 
     /*
