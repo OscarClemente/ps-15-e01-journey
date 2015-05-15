@@ -20,12 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "descripcion text not null, imagen text not null);";
 
     private static final String DATABASE_CREATE2 =
-            "create table comprar (id integer not null, nombre text not null, "
+            "create table comprar (_id integer not null, nombre text not null, "
                     + "correo text not null, fecha text not null,"
                     + "personas integer not null, "
-                    + "FOREIGN KEY(id) REFERENCES paquete(_id),"
+                    + "FOREIGN KEY(_id) REFERENCES paquete(_id),"
                     + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(id, correo));";
+                    + "PRIMARY KEY(_id, correo));";
 
     private static final String DATABASE_CREATE3 =
             "create table usuario (correo text primary key not null, "

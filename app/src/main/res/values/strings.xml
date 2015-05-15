@@ -36,5 +36,6 @@
     <string name="ver_info">Ver mas informacion</string>
     <string name="reenviar">Reenviar factura</string>
     <string name="compras">Compras</string>
+    <string name="no_compras">No hay compras</string>
 </resources>
 

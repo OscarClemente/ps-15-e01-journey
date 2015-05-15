@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class AdaptadorCompras {
 
-    public static final String KEY_ID = "id";
+    public static final String KEY_ID = "_id";
     public static final String KEY_NOMBRE = "nombre";
     public static final String KEY_CORREO = "correo";
     public static final String KEY_FECHA = "fecha";
@@ -134,7 +134,7 @@ public class AdaptadorCompras {
         Cursor mCursor =
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
-                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "=" + correo,
+                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "='" + correo + "'",
                         null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
