@@ -2,48 +2,55 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+    android:background="#FFC93F3C">
 
-    <Button android:id="@+id/registrar"
-        android:text="Registrarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
 
     <LinearLayout android:orientation="horizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Nick" />
-
-		<EditText
+        <EditText
 		    android:id="@+id/nick"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_weight="1" />
+		    android:layout_weight="1"
+            android:hint="Nick"
+            android:textColorHint="#fffdfff1" />
 	</LinearLayout>
-		
+
 	<LinearLayout android:orientation="horizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Contraseña" />
-		
-		<EditText android:id="@+id/pass"
+        <EditText android:id="@+id/pass"
 		  	android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
             android:inputType="textPassword"
-			android:layout_weight="1"/>
+			android:layout_weight="1"
+            android:hint="Contraseña"
+            android:textAllCaps="true"
+            android:textColorHint="#fffbfffb" />
 	</LinearLayout>
 
-	<Button android:id="@+id/identificar"
-	  	android:text="Iniciar sesión"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal">
+
+        <Button android:id="@+id/identificar"
+              android:text="Iniciar sesión"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <Button android:id="@+id/registrar"
+            android:text="Registrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
 
 </LinearLayout>
