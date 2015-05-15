@@ -33,21 +33,20 @@ public class SearchActivity extends ActionBarActivity {
         botonBuscar.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Intent extras = new Intent();
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
                 if (!editDestino.getText().toString().equals("")) {
-                    extras.putExtra(MainActivity.SEARCH_DESTINO, editDestino.getText().toString());
+                    intent.putExtra(MainActivity.SEARCH_DESTINO, editDestino.getText().toString());
                 }
                 if (!editDuracion.getText().toString().equals("")) {
-                    extras.putExtra(MainActivity.SEARCH_DURACION,
+                    intent.putExtra(MainActivity.SEARCH_DURACION,
                             Integer.parseInt(editDuracion.getText().toString()));
                 }
                 if (!editPrecio.getText().toString().equals("")) {
-                    extras.putExtra(MainActivity.SEARCH_PRECIO,
+                    intent.putExtra(MainActivity.SEARCH_PRECIO,
                             Float.parseFloat(editPrecio.getText().toString()));
                 }
-                extras.putExtra(MainActivity.SEARCH_VALORACION, editValoracion.getRating());
-                setResult(RESULT_OK, extras);
-                finish();
+                intent.putExtra(MainActivity.SEARCH_VALORACION, editValoracion.getRating());
+                startActivity(intent);
             }
 
         });

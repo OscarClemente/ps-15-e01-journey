@@ -62,10 +62,10 @@ public class MainActivity extends ActionBarActivity {
 
         //SI NO APARECE NADA DESCOMENTA ESTO PARA QUE SE AÑADA A LA BD, SOLO UNA EJECUCION LUEGO COMENTALO O HABRA VARIOS PAQUETES IGUALES
         //SI AL CONTRARIO APARECEN REPETIDOS, BORRA LA BASE DE DATOS
-        adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","test");
-        adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas (en inglés: Falkland Islands, AFI: [ˈfuckland ˈiland]; del francés iles Malouines","test");
-        adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","test");
-        adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","test");
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","test");
+        //adPaquetes.crearPaquete("Malvinas de ensueño", "Malvinas", 1000, 10, 3, "Las islas Malvinas (en inglés: Falkland Islands, AFI: [ˈfuckland ˈiland]; del francés iles Malouines","test");
+        //adPaquetes.crearPaquete("Teide Enigmático", "Tenerife", 300, 10, 3, "El Teide es un volcán situado en la isla de Tenerife (Islas Canarias, España). Con una altitud de 3718 metros.","test");
+        //adPaquetes.crearPaquete("Piramides Faraónicas", "Egipto", 9900, 10, 3, "Las pirámides de Egipto son, de todos los vestigios legados por egipcios de la Antigüedad, los más portentosos.","test");
 
         //CODIGO DE TEST
         //AdaptadorCompras adCompras = new AdaptadorCompras(this);
@@ -73,7 +73,14 @@ public class MainActivity extends ActionBarActivity {
         //adCompras.borrarCompras();
         //adCompras.crearCompra(2,"Malvinas de ensueño","test","24 de mayo de 2015", 2);
 
-        listarPaquetes(null, 0, 0, 0);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String destino = (String) extras.get(SEARCH_DESTINO);
+            int duracion = extras.getInt(SEARCH_DURACION);
+            float precio = extras.getFloat(SEARCH_PRECIO);
+            float valoracion = extras.getFloat(SEARCH_VALORACION);
+            listarPaquetes(destino, duracion, precio, valoracion);
+        } else listarPaquetes(null, 0, 0, 0);
     }
 
     /**
@@ -123,18 +130,6 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SEARCH_ACTIVITY && resultCode == RESULT_OK) {
-            Log.d("SEARCH","Ha vuelto correctamente");
-            Bundle extras = data.getExtras();
-            String destino = (String) extras.get(SEARCH_DESTINO);
-            int duracion = extras.getInt(SEARCH_DURACION);
-            float precio = extras.getFloat(SEARCH_PRECIO);
-            float valoracion = extras.getFloat(SEARCH_VALORACION);
-            listarPaquetes(destino, duracion, precio, valoracion);
-        }
-    }
-
     /**
      * A partir de unos datos parametro, busca en la base de datos y crea lo necesario para
      * mostrar por pantalla
@@ -178,7 +173,7 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_filter:
                 Log.d("SEARCH","Lanzando Search Activity");
                 Intent filterIntent = new Intent(MainActivity.this, SearchActivity.class);
-                MainActivity.this.startActivityForResult(filterIntent, SEARCH_ACTIVITY);
+                MainActivity.this.startActivity(filterIntent);
                 return true;
             case R.id.compras:
                 Intent comprasIntent = new Intent(MainActivity.this, CompraActivity.class);
