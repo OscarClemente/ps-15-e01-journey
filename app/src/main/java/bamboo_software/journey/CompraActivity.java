@@ -37,6 +37,9 @@ public class CompraActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compras);
 
+
+
+        registerForContextMenu(findViewById(R.id.listaCompra));
         adCompras.open();
         fillData();
     }
@@ -54,11 +57,11 @@ public class CompraActivity extends ActionBarActivity {
 
             /*Create an array to specify the fields we want to display in the
               list ( Id, correo, fecha y personas)*/
-            String[] from = new String[]{AdaptadorCompras.KEY_NOMBRE,AdaptadorCompras.KEY_FECHA,
+            String[] from = new String[]{AdaptadorCompras.KEY_ID,AdaptadorCompras.KEY_NOMBRE,AdaptadorCompras.KEY_FECHA,
                     AdaptadorCompras.KEY_PERSONAS};
 
             // and an array of the fields we want to bind those fields to (in this case just text1)
-            int[] to = new int[]{R.id.textTitulo,R.id.textFecha,R.id.textPersonas};
+            int[] to = new int[]{R.id.textID,R.id.textTitulo,R.id.textFecha,R.id.textPersonas};
 
             // Now create a simple cursor adapter and set it to display
             SimpleCursorAdapter compras =

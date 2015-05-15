@@ -76,6 +76,12 @@ public class DatosCompraActivity extends Activity {
         });
     }
 
+    @Override protected void onPause() {
+
+        super.onPause();
+    }
+
+
     private String getUsuario() {
         SharedPreferences settings = getSharedPreferences(USUARIO, 0);
         String correo = settings.getString("correo", null);

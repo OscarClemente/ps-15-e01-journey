@@ -10,7 +10,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +40,9 @@ public class PaqueteActivity extends ActionBarActivity {
     private Long clave;
 
     private AdaptadorPaquetes db;
-    static View.OnClickListener myOnClickListener;
+
+    private static final int SEARCH_ACTIVITY = 0;
+    private static final int COMPRA_ACTIVITY = 1;
 
     @Override
 
@@ -66,15 +70,7 @@ public class PaqueteActivity extends ActionBarActivity {
 
         clave = getIntent().getExtras().getLong("clave");
 
-        /*clave = (savedInstanceState == null) ? null :
-                (Long) savedInstanceState.getSerializable(AdaptadorPaquetes.KEY_ROWID);
-        if (clave == null) {
-            Bundle extras = getIntent().getExtras();
-            clave = extras != null ? extras.getLong(AdaptadorPaquetes.KEY_ROWID)
-                    : null;
-        }*/
-
-        populateFields();
+          populateFields();
         final Context c = getBaseContext();
         botonCompra.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -87,6 +83,8 @@ public class PaqueteActivity extends ActionBarActivity {
 
     }
 
+
+
     private void populateFields() {
             Cursor cur = db.listarPaquete(clave);
             startManagingCursor(cur);
@@ -94,12 +92,28 @@ public class PaqueteActivity extends ActionBarActivity {
             duracion.setText("" + cur.getInt(cur.getColumnIndex(db.KEY_DURACION)));
             descripcion.setText(cur.getString(cur.getColumnIndex(db.KEY_DESCRIPCION)));
             nota.setRating(cur.getInt(cur.getColumnIndex(db.KEY_CALIFICACION)));
-            precio.setText(Integer.toString(cur.getInt(cur.getColumnIndex(db.KEY_PRECIO))));
+            precio.setText(Integer.toString(cur.getInt(cur.getColumnIndex(db.KEY_PRECIO))) + "€");
             Bitmap imagen = decodeSampledBitmapFromFile((cur.getString(cur.getColumnIndex(db.KEY_IMAGEN))), 200, 200);
             imageViewIcon.setImageBitmap(imagen);
     }
 
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Controla la accion de los botones del menu superior
+        switch (item.getItemId()){
+            //boton de filtro-busqueda
+            case R.id.action_filter:
+                Log.d("SEARCH", "Lanzando Search Activity");
+                Intent filterIntent = new Intent(this, SearchActivity.class);
+                this.startActivityForResult(filterIntent, SEARCH_ACTIVITY);
+                return true;
+            case R.id.compras:
+                Intent comprasIntent = new Intent(this, CompraActivity.class);
+                this.startActivityForResult(comprasIntent, COMPRA_ACTIVITY);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
     private static class MyOnClickListener implements View.OnClickListener {
