@@ -44,11 +44,27 @@
             </LinearLayout>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Duración:"
+                android:id="@+id/textView"
+                android:textColor="@android:color/black" />
+
+            <TextView
                 android:layout_width="175dp"
-                android:layout_height="57dp"
+                android:layout_height="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/texto_duracion" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Descripción:"
+                android:id="@+id/textView2"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +78,18 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/nota"
                 android:layout_gravity="center"
-                android:clickable="false" />
+                android:isIndicator="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Precio:"
+                android:id="@+id/textView3"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="175sp"
