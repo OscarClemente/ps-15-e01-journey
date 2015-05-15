@@ -3,15 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
     <item android:id="@+id/action_filter"
-        android:icon="@drawable/android"
+        android:icon="@drawable/ic_lupa"
         android:title="@string/action_filter"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/compras"
-        android:icon="@drawable/compras"
+        android:icon="@drawable/ic_carrito"
         android:title="@string/compras"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout"
+        app:showAsAction="ifRoom" />
 </menu>
