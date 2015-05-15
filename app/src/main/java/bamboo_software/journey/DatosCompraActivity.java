@@ -1,10 +1,8 @@
 package bamboo_software.journey;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,7 +71,7 @@ public class DatosCompraActivity extends Activity {
                 mail.enviar(getUsuario());
 
                 setResult(RESULT_OK);
-                //finish();
+                finish();
             }
         });
     }
