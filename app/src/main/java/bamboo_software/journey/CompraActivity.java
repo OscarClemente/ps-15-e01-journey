@@ -1,14 +1,15 @@
 package bamboo_software.journey;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -17,7 +18,7 @@ import android.widget.TextView;
  * por el usuario. Se accede a ella mediante un boton del menu superior
  * de la pantalla de MainActivity.
  */
-public class CompraActivity extends ListActivity {
+public class CompraActivity extends ActionBarActivity {
 
     private static final String USUARIO = "CorreoUsuario";
     private static final int VER_INFO = 0;
@@ -62,7 +63,10 @@ public class CompraActivity extends ListActivity {
             // Now create a simple cursor adapter and set it to display
             SimpleCursorAdapter compras =
                     new SimpleCursorAdapter(this, R.layout.fila_compras, cursorCompras, from, to, 1);
-            setListAdapter(compras);
+
+            ListView listView = (ListView) findViewById(R.id.listaCompra);
+            listView.setAdapter(compras);
+            listView.setEmptyView(findViewById(R.id.android_empty));
         }
     }
 
