@@ -2,34 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/journeyred"
+    android:padding="20dp"
+    android:touchscreenBlocksFocus="true"
+    android:transitionGroup="false"
+    android:paddingTop="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Busca tu viaje ideal"
-        android:id="@+id/search_titulo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Busca tu viaje ideal"
+            android:id="@+id/search_titulo"
+            android:textColor="@color/journeygris"
+            android:paddingBottom="20dp"
+            android:textSize="30dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Por destino"
-        android:id="@+id/search_texto_destino" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Por destino"
+            android:id="@+id/search_texto_destino"
+            android:textColor="@color/journeygris"
+            android:textSize="22dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_destino"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_destino"
+            android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Por duración"
-        android:id="@+id/search_texto_duracion" />
+        android:id="@+id/search_texto_duracion"
+        android:textColor="@color/journeygris"
+        android:textSize="22dp"
+        android:paddingTop="15dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -43,7 +56,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Por precio"
-        android:id="@+id/search_texto_precio" />
+        android:id="@+id/search_texto_precio"
+        android:textColor="@color/journeygris"
+        android:textSize="22dp"
+        android:paddingTop="15dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -57,18 +73,26 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Por valoración"
-        android:id="@+id/search_texto_valoracion" />
+        android:id="@+id/search_texto_valoracion"
+        android:textColor="@color/journeygris"
+        android:textSize="22dp"
+        android:paddingTop="15dp" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/search_valoracion" />
+        android:id="@+id/search_valoracion"
+        android:paddingTop="5dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buscar"
         android:id="@+id/search_boton_buscar"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/journeygris"
+        android:textSize="20dp"
+        android:paddingTop="30dp" />
 
 </LinearLayout>
