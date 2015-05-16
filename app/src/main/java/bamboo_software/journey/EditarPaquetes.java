@@ -28,6 +28,7 @@ public class EditarPaquetes extends Activity {
     private int mDuracion;
     private int mCalificacion;
     private AdaptadorPaquetes paqueteDbHelper;
+    private boolean nuevaImagen;
 
     private static int RESULT_LOAD_IMAGE = 1;
 
@@ -42,6 +43,7 @@ public class EditarPaquetes extends Activity {
             paqueteDbHelper.crearPaquete("",0,0,0,"");
         }*/
 
+        nuevaImagen = false;
         setContentView(R.layout.editar_paquetes);
         setTitle(R.string.editar_paquetes);
 
@@ -83,6 +85,7 @@ public class EditarPaquetes extends Activity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
+                guardarPaquete();
                 setResult(RESULT_OK);
                 finish();
             }
@@ -108,8 +111,10 @@ public class EditarPaquetes extends Activity {
                     paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_DESCRIPCION)));
             mDestino.setText(paquete.getString(
                     paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_DESTINO)));
-            //mImagenText.setText(paquete.getString(
-            //        paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_IMAGEN)));
+            if(!nuevaImagen){
+                mImagenText.setText(paquete.getString(
+                        paquete.getColumnIndexOrThrow(paqueteDbHelper.KEY_IMAGEN)));
+            }
         }
         else {
             mIdText.setText("***");
@@ -117,7 +122,7 @@ public class EditarPaquetes extends Activity {
 
     }
 
-    @Override
+    /*@Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         saveState();
@@ -134,7 +139,7 @@ public class EditarPaquetes extends Activity {
     protected void onResume() {
         super.onResume();
         populateFields();
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -152,14 +157,13 @@ public class EditarPaquetes extends Activity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            System.out.println("IMAGEN PATH:");
-            System.out.println(picturePath);
+            nuevaImagen = true;
 
             mImagenText.setText(picturePath);
         }
     }
 
-    private void saveState() {
+    private void guardarPaquete() {
         String nombre = mNombre.getText().toString();
         String Sprecio = mPrecioText.getText().toString();
         int precio = parseInt(Sprecio);
