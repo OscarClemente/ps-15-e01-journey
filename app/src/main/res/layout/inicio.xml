@@ -59,14 +59,14 @@
             <EditText android:id="@+id/pass"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:layout_weight="1"
                 android:hint="Contraseña"
                 android:textAllCaps="true"
                 android:textColorHint="@color/journeygris"
                 android:layout_marginBottom="10dp"
                 android:textColor="#ffffffff"
-                android:textIsSelectable="false" />
+                android:textIsSelectable="false"
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout

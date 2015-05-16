@@ -5,99 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="55dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-		<EditText
-		    android:id="@+id/correo"
-            android:layout_width="260dp"
-		    android:layout_height="wrap_content"
-            android:hint="Correo"
-            android:textColorHint="@color/journeyred"
-		    android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
-		
-	<LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-		
-		<EditText android:id="@+id/nick"
-            android:layout_width="260dp"
-			android:layout_height="wrap_content"
-            android:hint="Nick"
-            android:textColorHint="@color/journeyred"
-			android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
-	
-	<LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-		
-		<EditText android:id="@+id/pass"
-            android:layout_width="260dp"
-			android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Contraseña"
-            android:textColorHint="@color/journeyred"
-			android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
-	
-	<LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-		
-		<EditText android:id="@+id/nombre"
-            android:layout_width="260dp"
-			android:layout_height="wrap_content"
-            android:hint="Nombre"
-            android:textColorHint="@color/journeyred"
-			android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
+        <EditText
+            android:id="@+id/correo"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:hint="Correo"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff" />
 
-	<LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        <EditText android:id="@+id/nick"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:hint="Nick"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff"/>
 
-		<EditText android:id="@+id/direccion"
-            android:layout_width="260dp"
-			android:layout_height="wrap_content"
-            android:hint="Dirección"
-            android:textColorHint="@color/journeyred"
-			android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
+        <EditText android:id="@+id/pass"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:inputType="textPassword"
+android:hint="Contraseña"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff"/>
 
-	<LinearLayout android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-		
-		<EditText android:id="@+id/telefono"
-            android:layout_width="260dp"
-			android:layout_height="wrap_content"
-            android:hint="Teléfono"
-            android:textColorHint="@color/journeyred"
-			android:layout_weight="1"
-            android:textColor="#ffffffff"/>
-	</LinearLayout>
+        <EditText android:id="@+id/nombre"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:hint="Nombre"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff"/>
 
-	<Button android:id="@+id/confirmar"
+        <EditText android:id="@+id/direccion"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:hint="Dirección"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff"/>
+
+        <EditText android:id="@+id/telefono"
+android:layout_width="260dp"
+            android:layout_height="wrap_content"
+android:hint="Teléfono"
+android:textColorHint="@color/journeyred"
+            android:layout_weight="1"
+android:textColor="#ffffffff"/>
+    </LinearLayout>
+
+    <Button android:id="@+id/confirmar"
         android:layout_marginTop="10dp"
 	  	android:text="Confirmar"
 		android:layout_width="wrap_content"

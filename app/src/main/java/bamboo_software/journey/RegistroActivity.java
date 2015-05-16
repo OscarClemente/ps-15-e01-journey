@@ -44,6 +44,8 @@ public class RegistroActivity extends ActionBarActivity {
         mNombreText = (EditText) findViewById(R.id.nombre);
         mDireccionText = (EditText) findViewById(R.id.direccion);
         mTelefonoText = (EditText) findViewById(R.id.telefono);
+
+        //mTelefonoText.setRawInputType(Configuration.KEYBOARD_QWERTY);
         
         Button botonConfirmar = (Button) findViewById(R.id.confirmar);
 
