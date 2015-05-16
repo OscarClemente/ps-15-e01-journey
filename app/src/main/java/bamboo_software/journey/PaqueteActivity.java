@@ -61,7 +61,7 @@ public class PaqueteActivity extends ActionBarActivity {
         Drawable estrella = nota.getProgressDrawable();
         nota.setClickable(false);
         nota.setFocusable(false);
-        estrella.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+        estrella.setColorFilter(Color.argb(255, 255, 202, 40), PorterDuff.Mode.SRC_ATOP);
         precio = (TextView) findViewById(R.id.texto_precio);
         imageViewIcon = (ImageView) findViewById(R.id.vista_foto_paquete);
         Button botonCompra = (Button) findViewById(R.id.comprar);

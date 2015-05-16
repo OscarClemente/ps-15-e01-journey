@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    >
+        android:layout_marginTop="50dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -19,11 +19,11 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="journey"
             android:id="@+id/Journey"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="40dp"
             android:layout_gravity="center_horizontal"
             android:textIsSelectable="false"
-            android:textSize="@dimen/abc_action_button_min_height_material"
+            android:textSize="80dp"
             android:textColor="#ffffffff" />
     </LinearLayout>
 
