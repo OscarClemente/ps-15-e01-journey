@@ -1,55 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
 	android:layout_height="match_parent"
-    android:background="#FFC93F3C">
+    android:background="@color/journeyred"
+    android:orientation="vertical">
 
-
-    <LinearLayout android:orientation="horizontal"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-        <EditText
-		    android:id="@+id/nick"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-            android:hint="Nick"
-            android:textColorHint="#fffdfff1" />
-	</LinearLayout>
-
-	<LinearLayout android:orientation="horizontal"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/pass"
-		  	android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-            android:inputType="textPassword"
-			android:layout_weight="1"
-            android:hint="Contraseña"
-            android:textAllCaps="true"
-            android:textColorHint="#fffbfffb" />
-	</LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+    >
 
-        <Button android:id="@+id/identificar"
-              android:text="Iniciar sesión"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="journey"
+            android:id="@+id/Journey"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_gravity="center_horizontal"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/abc_action_button_min_height_material"
+            android:textColor="#ffffffff" />
+    </LinearLayout>
 
-        <Button android:id="@+id/registrar"
-            android:text="Registrarse"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/nick"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nick"
+                android:textColorHint="@color/journeygris"
+                android:singleLine="false"
+                android:phoneNumber="false"
+                android:layout_marginBottom="10dp"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <EditText android:id="@+id/pass"
+                  android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_weight="1"
+                android:hint="Contraseña"
+                android:textAllCaps="true"
+                android:textColorHint="@color/journeygris"
+                android:layout_marginBottom="10dp"
+                android:textColor="#ffffffff"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="260dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal">
+
+            <Button android:id="@+id/identificar"
+                  android:text="INICIAR SESIÓN"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="@color/journeygris"
+                android:layout_marginRight="5dp"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <Button android:id="@+id/registrar"
+                android:text="REGISTRARSE"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="@color/journeygris"
+                android:layout_marginLeft="5dp"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
