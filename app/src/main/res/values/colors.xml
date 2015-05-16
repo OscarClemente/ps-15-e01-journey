@@ -14,6 +14,7 @@
     <item name="journeyred" type="color">#FFC93F3C</item>
     <item name="journeygris" type="color">#FFDBDBDB</item>
     <item name="grisHint" type="color">#FFA1A1A1</item>
+    <item name="grisOscuroHint" type="color">#696969</item>
     <item name="whiteHint" type="color">#FFFFFFFF</item>
 
     <integer-array name="androidcolors">
