@@ -4,6 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/journeyred</item>
+       <!-- <item name="colorControlNormal">@color/journeygris</item>
+        <item name="colorControlActivated">@color/journeyred</item>
+        <item name="colorControlHighlight">#FF000000</item>-->
     </style>
 
 
