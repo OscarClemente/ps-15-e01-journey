@@ -23,6 +23,13 @@
             android:layout_height="fill_parent"
             android:weightSum="1">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView2"
+                android:src="@drawable/Calendar1"
+                android:layout_marginRight="5dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,6 +37,12 @@
                 android:text="Medium Text"
                 android:id="@+id/textFecha"
                 android:layout_weight="0.50" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="23dp"
+                android:src="@drawable/personita"
+                android:id="@+id/imageView3" />
 
             <TextView
                 android:layout_width="wrap_content"

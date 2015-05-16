@@ -9,90 +9,100 @@
     android:transitionGroup="false"
     android:paddingTop="15dp">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Busca tu viaje ideal"
-            android:id="@+id/search_titulo"
-            android:textColor="#FAFAFA"
-            android:paddingBottom="20dp"
-            android:textSize="30dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Busca tu viaje ideal"
+                android:id="@+id/search_titulo"
+                android:textColor="#FAFAFA"
+                android:paddingBottom="20dp"
+                android:textSize="30dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Por destino"
+                android:id="@+id/search_texto_destino"
+                android:textColor="#FAFAFA"
+                android:textSize="22dp" />
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_destino"
+                android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Por destino"
-            android:id="@+id/search_texto_destino"
+            android:text="Por duración"
+            android:id="@+id/search_texto_duracion"
             android:textColor="#FAFAFA"
-            android:textSize="22dp" />
+            android:textSize="22dp"
+            android:paddingTop="15dp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/search_destino"
-            android:layout_gravity="center_horizontal" />
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/search_duracion" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Por duración"
-        android:id="@+id/search_texto_duracion"
-        android:textColor="#FAFAFA"
-        android:textSize="22dp"
-        android:paddingTop="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Por precio"
+            android:id="@+id/search_texto_precio"
+            android:textColor="#FAFAFA"
+            android:textSize="22dp"
+            android:paddingTop="15dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/search_duracion" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/search_precio" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Por precio"
-        android:id="@+id/search_texto_precio"
-        android:textColor="#FAFAFA"
-        android:textSize="22dp"
-        android:paddingTop="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Por valoración"
+            android:id="@+id/search_texto_valoracion"
+            android:textColor="#FAFAFA"
+            android:textSize="22dp"
+            android:paddingTop="15dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/search_precio" />
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_valoracion"
+            android:paddingTop="5dp" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Por valoración"
-        android:id="@+id/search_texto_valoracion"
-        android:textColor="#FAFAFA"
-        android:textSize="22dp"
-        android:paddingTop="15dp" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_valoracion"
-        android:paddingTop="5dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BUSCAR"
-        android:id="@+id/search_boton_buscar"
-        android:layout_gravity="center_horizontal|right"
-        style="?android:attr/borderlessButtonStyle"
-        android:textColor="#FAFAFA"
-        android:textSize="20dp"
-        android:paddingTop="30dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUSCAR"
+            android:id="@+id/search_boton_buscar"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#FAFAFA"
+            android:textSize="20dp"
+            android:paddingTop="0dp" />
+    </FrameLayout>
 
 </LinearLayout>
