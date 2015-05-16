@@ -2,6 +2,9 @@ package bamboo_software.journey;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -12,7 +15,7 @@ import android.widget.RatingBar;
 /**
  *
  */
-public class SearchActivity extends ActionBarActivity {
+public class SearchActivity extends Activity {
 
     private EditText editDestino;
     private EditText editDuracion;
@@ -28,6 +31,8 @@ public class SearchActivity extends ActionBarActivity {
         editDuracion = (EditText) findViewById(R.id.search_duracion);
         editPrecio = (EditText) findViewById(R.id.search_precio);
         editValoracion = (RatingBar) findViewById(R.id.search_valoracion);
+        LayerDrawable stars = (LayerDrawable) editValoracion.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP);    //FAFAFA?
 
         Button botonBuscar = (Button) findViewById(R.id.search_boton_buscar);
         botonBuscar.setOnClickListener(new View.OnClickListener() {
