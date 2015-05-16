@@ -106,6 +106,7 @@ public class MainActivity extends ActionBarActivity {
             String selectedName = (String) textViewName.getText();
             long cardId = Long.parseLong(selectedName);
 
+
             Intent paqueteIntent = new Intent(MainActivity.this, PaqueteActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putLong("clave", cardId);
@@ -118,7 +119,10 @@ public class MainActivity extends ActionBarActivity {
             System.out.println(cur.getString(cur.getColumnIndex(adPaquetes.KEY_NOMBRE)));
 
             System.out.println(cardId);*/
+
             MainActivity.this.startActivity(paqueteIntent);
+
+            overridePendingTransition  (R.anim.pull_in_right, R.anim.push_out_left);
         }
 
     }
