@@ -121,6 +121,7 @@ public class MainActivity extends ActionBarActivity {
             System.out.println(cardId);*/
 
             MainActivity.this.startActivity(paqueteIntent);
+
             overridePendingTransition  (R.anim.pull_in_right, R.anim.push_out_left);
         }
 
