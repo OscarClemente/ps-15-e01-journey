@@ -1,13 +1,15 @@
 package bamboo_software.journey;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Clase que se encarga de identificar si los datos indroducidos por el usuario se
@@ -16,7 +18,7 @@ import android.widget.EditText;
  * Por otro lado, también te puede redireccionar a RegistroActivity si el usuario no
  * está registrado
  */
-public class InicioActivity extends ActionBarActivity {
+public class InicioActivity extends Activity {
 
     private static final int ACTIVITY_ADMIN = 0;
     private static final int ACTIVITY_CLIENTE = 1;
@@ -33,7 +35,11 @@ public class InicioActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.inicio);
-        setTitle(R.string.inicio);
+        //setTitle(R.string.inicio);
+
+        TextView txt = (TextView) findViewById(R.id.Journey);
+        Typeface font = Typeface.createFromAsset(getAssets(), "futura.ttf");
+        txt.setTypeface(font);
 
         Button botonRegistrar = (Button) findViewById(R.id.registrar);
 
