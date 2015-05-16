@@ -1,99 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="55dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Correo" />
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
 		<EditText
 		    android:id="@+id/correo"
-		    android:layout_width="wrap_content"
+            android:layout_width="260dp"
 		    android:layout_height="wrap_content"
-		    android:layout_weight="1" />
+            android:hint="Correo"
+            android:textColorHint="@color/journeyred"
+		    android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 		
 	<LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Nick" />
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 		
-		<EditText android:id="@+id/nick" 
-		  	android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_weight="1"/>
+		<EditText android:id="@+id/nick"
+            android:layout_width="260dp"
+			android:layout_height="wrap_content"
+            android:hint="Nick"
+            android:textColorHint="@color/journeyred"
+			android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 	
 	<LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Contraseña" />
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 		
-		<EditText android:id="@+id/pass" 
-		  	android:layout_width="wrap_content"
+		<EditText android:id="@+id/pass"
+            android:layout_width="260dp"
 			android:layout_height="wrap_content"
             android:inputType="textPassword"
-			android:layout_weight="1"/>
+            android:hint="Contraseña"
+            android:textColorHint="@color/journeyred"
+			android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 	
 	<LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Nombre" />
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 		
-		<EditText android:id="@+id/nombre" 
-		  	android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_weight="1"/>
+		<EditText android:id="@+id/nombre"
+            android:layout_width="260dp"
+			android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:textColorHint="@color/journeyred"
+			android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 
 	<LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Dirección" />
-		
-		<EditText android:id="@+id/direccion" 
-		  	android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_weight="1"/>
+		<EditText android:id="@+id/direccion"
+            android:layout_width="260dp"
+			android:layout_height="wrap_content"
+            android:hint="Dirección"
+            android:textColorHint="@color/journeyred"
+			android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 
 	<LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="Teléfono" />
+		android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 		
-		<EditText android:id="@+id/telefono" 
-		  	android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_weight="1"/>
+		<EditText android:id="@+id/telefono"
+            android:layout_width="260dp"
+			android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:textColorHint="@color/journeyred"
+			android:layout_weight="1"
+            android:textColor="#ffffffff"/>
 	</LinearLayout>
 
-	<Button android:id="@+id/confirmar" 
+	<Button android:id="@+id/confirmar"
+        android:layout_marginTop="10dp"
 	  	android:text="Confirmar"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/grisHint"
+        android:textSize="13dp"
+        android:textStyle="bold" />
 
 </LinearLayout>
