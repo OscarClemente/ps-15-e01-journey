@@ -179,6 +179,9 @@ public class MainActivity extends ActionBarActivity {
                 Intent comprasIntent = new Intent(MainActivity.this, CompraActivity.class);
                 MainActivity.this.startActivityForResult(comprasIntent, COMPRA_ACTIVITY);
                 return true;
+            case R.id.logout:
+                Intent inicioIntent = new Intent(MainActivity.this, InicioActivity.class);
+                MainActivity.this.startActivity(inicioIntent);
             default:
                 return super.onOptionsItemSelected(item);
         }
