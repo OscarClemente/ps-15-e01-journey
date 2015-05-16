@@ -32,7 +32,7 @@ public class SearchActivity extends Activity {
         editPrecio = (EditText) findViewById(R.id.search_precio);
         editValoracion = (RatingBar) findViewById(R.id.search_valoracion);
         LayerDrawable stars = (LayerDrawable) editValoracion.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP);    //FAFAFA?
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#FAFAFA"), PorterDuff.Mode.SRC_ATOP);    //FAFAFA?
 
         Button botonBuscar = (Button) findViewById(R.id.search_boton_buscar);
         botonBuscar.setOnClickListener(new View.OnClickListener() {
