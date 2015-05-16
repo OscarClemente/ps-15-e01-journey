@@ -110,6 +110,11 @@ public class PaqueteActivity extends ActionBarActivity {
                 Intent comprasIntent = new Intent(this, CompraActivity.class);
                 this.startActivityForResult(comprasIntent, COMPRA_ACTIVITY);
                 return true;
+            case R.id.logout:
+                Intent inicioIntent = new Intent(PaqueteActivity.this, InicioActivity.class);
+                inicioIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                this.startActivity(inicioIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

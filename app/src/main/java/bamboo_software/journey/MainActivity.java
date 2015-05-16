@@ -181,7 +181,9 @@ public class MainActivity extends ActionBarActivity {
                 return true;
             case R.id.logout:
                 Intent inicioIntent = new Intent(MainActivity.this, InicioActivity.class);
-                MainActivity.this.startActivity(inicioIntent);
+                inicioIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                this.startActivity(inicioIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
