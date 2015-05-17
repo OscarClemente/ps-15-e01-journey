@@ -1,9 +1,9 @@
 package bamboo_software.journey;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.view.View;
@@ -16,7 +16,7 @@ import java.util.Calendar;
 /**
  * Created by Daniel on 05/05/2015.
  */
-public class DatosCompraActivity extends Activity {
+public class DatosCompraActivity extends ActionBarActivity {
 
     private EditText mTarjeta;
     private EditText mPersonas;

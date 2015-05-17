@@ -10,6 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +54,11 @@ public class PaqueteActivity extends ActionBarActivity {
         db.open();
 
         setContentView(R.layout.paquete);
+
+        SpannableString s = new SpannableString("journey");
+        s.setSpan(new bamboo_software.journey.TypefaceSpan(this, "futura.ttf"),
+                0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        setTitle(s);
 
         nombre = (TextView) findViewById(R.id.texto_nombre);	//nuevo
         duracion = (TextView) findViewById(R.id.texto_duracion);

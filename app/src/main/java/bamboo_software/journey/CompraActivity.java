@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +39,10 @@ public class CompraActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compras);
 
-        setTitle("Mis compras");
+        SpannableString s = new SpannableString("Mis compras");
+        s.setSpan(new bamboo_software.journey.TypefaceSpan(this, "futura.ttf"),
+                0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        setTitle(s);
 
         registerForContextMenu(findViewById(R.id.listaCompra));
         adCompras.open();
