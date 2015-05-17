@@ -37,7 +37,7 @@ public class CompraActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compras);
 
-
+        setTitle("Mis compras");
 
         registerForContextMenu(findViewById(R.id.listaCompra));
         adCompras.open();
@@ -50,6 +50,7 @@ public class CompraActivity extends ActionBarActivity {
      */
     private void fillData() {
         String correo = getUsuario();
+
         /* Comprueba que se ha almacenado el correo del usuario */
         if (correo != null) {
             Cursor cursorCompras = adCompras.listarCompra(correo);
