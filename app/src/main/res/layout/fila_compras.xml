@@ -21,37 +21,52 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:gravity="center">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/calendar1"
-                android:layout_marginRight="5dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="180dp"
+                android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textFecha"
-                android:layout_marginRight="5dp"
-                android:layout_weight="0.50" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="23dp"
+                    android:src="@drawable/personita"
+                    android:id="@+id/imageView3" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="23dp"
-                android:src="@drawable/personita"
-                android:id="@+id/imageView3" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/textPersonas"
+                    android:layout_weight="0.50" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textPersonas"
-                android:layout_weight="0.50" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="180dp"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/calendar1"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/textFecha"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.50" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
