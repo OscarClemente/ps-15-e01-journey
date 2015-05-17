@@ -1,27 +1,19 @@
 package bamboo_software.journey;
 
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.GestureDetector;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.TextView;
 
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
@@ -54,7 +46,10 @@ public class InicioPaquetes extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        setTitle("Menu del Admin");
+        SpannableString s = new SpannableString("Administrador");
+        s.setSpan(new bamboo_software.journey.TypefaceSpan(this, "futura.ttf"),
+                0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        setTitle(s);
 
         myOnClickListener = new MyOnClickListener(this);
 
@@ -195,12 +190,6 @@ public class InicioPaquetes extends ActionBarActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     /**
      * A partir de unos datos parametro, busca en la base de datos y crea lo necesario para
