@@ -52,7 +52,6 @@ public class PaqueteActivity extends ActionBarActivity {
         db.open();
 
         setContentView(R.layout.paquete);
-        setTitle(R.string.paquete);
 
         nombre = (TextView) findViewById(R.id.texto_nombre);	//nuevo
         duracion = (TextView) findViewById(R.id.texto_duracion);
@@ -89,7 +88,7 @@ public class PaqueteActivity extends ActionBarActivity {
             Cursor cur = db.listarPaquete(clave);
             startManagingCursor(cur);
             nombre.setText(cur.getString(cur.getColumnIndex(db.KEY_NOMBRE)));
-            duracion.setText("" + cur.getInt(cur.getColumnIndex(db.KEY_DURACION)));
+            duracion.setText("" + cur.getInt(cur.getColumnIndex(db.KEY_DURACION))+ " días");
             descripcion.setText(cur.getString(cur.getColumnIndex(db.KEY_DESCRIPCION)));
             nota.setRating(cur.getInt(cur.getColumnIndex(db.KEY_CALIFICACION)));
             precio.setText(Integer.toString(cur.getInt(cur.getColumnIndex(db.KEY_PRECIO))) + "€");
