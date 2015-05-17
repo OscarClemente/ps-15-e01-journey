@@ -54,15 +54,17 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp">
 
-        <Button android:id="@+id/comprar"
-            android:layout_marginTop="25dp"
+        <Button
             android:text="COMPRAR"
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/journeyred"
-            android:textSize="20dp"
             style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/journeyred"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:id="@+id/comprar"
             android:layout_gravity="bottom|right" />
+
 
     </FrameLayout>
 

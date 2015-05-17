@@ -3,7 +3,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="10dp">
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -122,14 +125,16 @@
         android:hint="Descripción del paquete..."
         android:textColor="@color/grisOscuroHint" />
 
-    <Button android:id="@+id/confirm"
-        android:text="@string/confirm"
-        android:layout_width="wrap_content"
+    <Button
+        android:text="COMPRAR"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_gravity="right"
         android:textColor="@color/journeyred"
-        android:textSize="20dp" />
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:id="@+id/confirm"
+        android:layout_gravity="right" />
 
 
 
