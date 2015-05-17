@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +19,8 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="35dp"
-            android:textColor="#ffffffff" />
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/nick"
             android:layout_width="300dp"
@@ -28,7 +29,8 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/pass"
             android:layout_width="300dp"
@@ -38,7 +40,8 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/nombre"
             android:layout_width="300dp"
@@ -47,7 +50,8 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/direccion"
             android:layout_width="300dp"
@@ -56,7 +60,8 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/telefono"
             android:layout_width="300dp"
@@ -65,17 +70,25 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="15dp" />
     </LinearLayout>
 
-    <Button android:id="@+id/confirmar"
-        android:layout_marginTop="25dp"
-	  	android:text="Confirmar"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/journeyred"
-        android:textSize="20dp"
-        style="?android:attr/borderlessButtonStyle" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <Button android:id="@+id/confirmar"
+            android:layout_marginTop="25dp"
+              android:text="CONFIRMAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/journeyred"
+            android:textSize="20dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="bottom|right" />
+    </FrameLayout>
 
 </LinearLayout>
