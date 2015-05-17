@@ -9,7 +9,8 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="70dp">
 
         <EditText
             android:id="@+id/tarjeta"
@@ -45,24 +46,24 @@
             android:layout_marginBottom="15dp"
             android:inputType="text" />
 
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
-
-            <Button android:id="@+id/comprar"
-                android:layout_marginTop="25dp"
-                android:text="@string/comprar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/journeyred"
-                android:textSize="20dp"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_gravity="bottom|right" />
-
-        </FrameLayout>
-
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <Button android:id="@+id/comprar"
+            android:layout_marginTop="25dp"
+            android:text="@string/comprar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/journeyred"
+            android:textSize="20dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="bottom|right" />
+
+    </FrameLayout>
 
 </LinearLayout>

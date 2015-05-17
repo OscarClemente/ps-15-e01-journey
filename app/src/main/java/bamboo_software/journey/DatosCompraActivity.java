@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +42,10 @@ public class DatosCompraActivity extends Activity {
         paqueteDbHelper = new AdaptadorPaquetes(this);
         paqueteDbHelper.open();
 
-        setTitle("Finalizar Compra");
+        SpannableString s = new SpannableString("Introduce estos datos");
+        s.setSpan(new bamboo_software.journey.TypefaceSpan(this, "futura.ttf"),
+                0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        setTitle(s);
 
         mTarjeta = (EditText) findViewById(R.id.tarjeta);
         mPersonas = (EditText) findViewById(R.id.personas);
