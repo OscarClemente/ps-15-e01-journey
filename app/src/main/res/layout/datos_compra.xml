@@ -1,76 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent">
 
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-        <TextView android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/tarjeta"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="@string/tarjeta" />
-
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/tarjeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/personas" />
-
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:hint="Tarjeta"
+            android:textColorHint="@color/grisOscuroHint"
+            android:layout_weight="1"
+            android:layout_marginTop="35dp"
+            android:textColor="#ff000000"
+            android:layout_marginBottom="15dp"
+            android:inputType="number" />
 
         <EditText android:id="@+id/personas"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pagador" />
-
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:hint="Nº personas"
+            android:textColorHint="@color/grisOscuroHint"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:textColor="#ff000000"
+            android:layout_marginBottom="15dp"
+            android:inputType="number" />
 
         <EditText android:id="@+id/pagador"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:hint="Nombre del pagador"
+            android:textColorHint="@color/grisOscuroHint"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:textColor="#ff000000"
+            android:layout_marginBottom="15dp"
+            android:inputType="text" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+
+            <Button android:id="@+id/comprar"
+                android:layout_marginTop="25dp"
+                android:text="@string/comprar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/journeyred"
+                android:textSize="20dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_gravity="bottom|right" />
+
+        </FrameLayout>
 
     </LinearLayout>
-
-    <Button android:id="@+id/comprar"
-        android:text="@string/comprar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick" />
 
 </LinearLayout>
