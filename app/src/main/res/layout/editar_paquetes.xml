@@ -131,4 +131,6 @@
         android:textColor="@color/journeyred"
         android:textSize="20dp" />
 
+
+
 </LinearLayout>

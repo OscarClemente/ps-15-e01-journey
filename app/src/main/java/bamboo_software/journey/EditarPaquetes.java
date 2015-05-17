@@ -88,6 +88,7 @@ public class EditarPaquetes extends Activity {
                 guardarPaquete();
                 setResult(RESULT_OK);
                 finish();
+                overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
             }
 
         });
@@ -190,6 +191,13 @@ public class EditarPaquetes extends Activity {
                 paqueteDbHelper.actualizarPaquete(mRowId,nombre,destino,precio,duracion,calificacion,descripcion,imagen);
         }
         //paqueteDbHelper.close();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 
 }
