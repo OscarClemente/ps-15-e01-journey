@@ -19,8 +19,9 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="35dp"
-            android:textColor="#ffffffff"
-            android:layout_marginBottom="15dp" />
+            android:textColor="#ff000000"
+            android:layout_marginBottom="15dp"
+            android:inputType="phone" />
 
         <EditText android:id="@+id/nick"
             android:layout_width="300dp"
@@ -29,7 +30,7 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"
+            android:textColor="#ff000000"
             android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/pass"
@@ -40,7 +41,7 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"
+            android:textColor="#ff000000"
             android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/nombre"
@@ -50,7 +51,7 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"
+            android:textColor="#ff000000"
             android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/direccion"
@@ -60,7 +61,7 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"
+            android:textColor="#ff000000"
             android:layout_marginBottom="15dp" />
 
         <EditText android:id="@+id/telefono"
@@ -70,7 +71,7 @@
             android:textColorHint="@color/grisOscuroHint"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:textColor="#ffffffff"
+            android:textColor="#ff000000"
             android:layout_marginBottom="15dp" />
     </LinearLayout>
 
