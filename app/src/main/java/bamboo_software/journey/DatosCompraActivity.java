@@ -82,7 +82,6 @@ public class DatosCompraActivity extends ActionBarActivity {
     }
 
     @Override protected void onPause() {
-
         super.onPause();
     }
 

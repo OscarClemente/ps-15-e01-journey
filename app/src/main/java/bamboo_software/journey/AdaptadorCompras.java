@@ -155,7 +155,7 @@ public class AdaptadorCompras {
         Cursor mCursor =
 
                 mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
-                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "=" + correo + " AND " +
+                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "='" + correo + "' AND " +
                                 KEY_ID + "=" + id,
                         null, null, null, null, null);
         if (mCursor != null) {
