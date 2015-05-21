@@ -131,7 +131,7 @@ public class RegistroActivity extends ActionBarActivity {
             registrado = true;
         }
         else {
-            TextView userCorreo = (TextView) RegistroActivity.this.findViewById(R.id.correoError);
+            TextView userCorreo = (TextView) RegistroActivity.this.findViewById(R.id.usuarioError);
             TextView userNick = (TextView) RegistroActivity.this.findViewById(R.id.nickError);
             TextView mail = (TextView) RegistroActivity.this.findViewById(R.id.correoError);
             TextView user = (TextView) RegistroActivity.this.findViewById(R.id.nickError);
@@ -150,8 +150,8 @@ public class RegistroActivity extends ActionBarActivity {
                 tlf.setVisibility(View.INVISIBLE);
             }
             else if(usuarioNick == null) {
-                userCorreo.setVisibility(View.INVISIBLE);
-                userNick.setVisibility(View.VISIBLE);
+                userCorreo.setVisibility(View.VISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
                 mail.setVisibility(View.INVISIBLE);
                 user.setVisibility(View.INVISIBLE);
                 name.setVisibility(View.INVISIBLE);

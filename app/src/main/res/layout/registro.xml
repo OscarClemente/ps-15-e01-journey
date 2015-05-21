@@ -30,11 +30,11 @@
             <TextView android:id="@+id/correoError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Correo inválido"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
                 android:layout_marginBottom="15dp" />
 
@@ -51,11 +51,11 @@
             <TextView android:id="@+id/nickError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Nick inválido"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
                 android:layout_marginBottom="15dp" />
 
@@ -73,11 +73,11 @@
             <TextView android:id="@+id/passError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Contraseña inválida"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
                 android:layout_marginBottom="15dp" />
 
@@ -94,13 +94,13 @@
             <TextView android:id="@+id/nombreError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Nombre de usuario inválido"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="15dp" />z
 
             <EditText android:id="@+id/direccion"
                 android:layout_width="300dp"
@@ -115,11 +115,11 @@
             <TextView android:id="@+id/direccionError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Dirección inválida"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
                 android:layout_marginBottom="15dp" />
 
@@ -137,11 +137,11 @@
             <TextView android:id="@+id/telefonoError"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Nick"
+                android:hint="Telefóno inválido"
                 android:textColorHint="@color/grisOscuroHint"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
+                android:textColor="#fffbfffb"
                 android:visibility="invisible"
                 android:layout_marginBottom="15dp" />
         </LinearLayout>
@@ -163,6 +163,18 @@
             android:textStyle="bold"
             android:text="CONFIRMAR"
             android:layout_gravity="bottom|right" />
+
+        <TextView android:id="@+id/usuarioError"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:hint="El correo o nick ya existe"
+            android:textColorHint="@color/grisOscuroHint"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:textColor="#fffbfffb"
+            android:visibility="invisible"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="right|top" />
     </FrameLayout>
 
 </LinearLayout>
