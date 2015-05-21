@@ -21,11 +21,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_CREATE2 =
             "create table comprar (_id integer not null, nombre text not null, "
+                    + "id_compra integer primary key autoincrement, "
                     + "correo text not null, fecha text not null,"
                     + "personas integer not null, "
                     + "FOREIGN KEY(_id) REFERENCES paquete(_id),"
-                    + "FOREIGN KEY(correo) REFERENCES usuario(correo),"
-                    + "PRIMARY KEY(_id, correo));";
+                    + "FOREIGN KEY(correo) REFERENCES usuario(correo));";
 
     private static final String DATABASE_CREATE3 =
             "create table usuario (correo text primary key not null, "
