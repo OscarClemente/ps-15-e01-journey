@@ -47,7 +47,6 @@
                 android:textColorHint="@color/journeygris"
                 android:singleLine="false"
                 android:phoneNumber="false"
-                android:layout_marginBottom="10dp"
                 android:textColor="#ffffffff" />
         </LinearLayout>
 
@@ -57,12 +56,11 @@
             android:layout_gravity="center_horizontal">
 
             <TextView android:id="@+id/errorNick"
-                android:layout_width="260dp"
+                android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:hint="Nombre de usuario no encontrado"
                 android:textColorHint="#fffbfffb"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="0dp"
                 android:visibility="invisible" />
 
         </LinearLayout>
@@ -79,7 +77,6 @@
                 android:hint="Contraseña"
                 android:textAllCaps="true"
                 android:textColorHint="@color/journeygris"
-                android:layout_marginBottom="10dp"
                 android:textColor="#ffffffff"
                 android:textIsSelectable="false"
                 android:inputType="textPassword" />
@@ -91,12 +88,11 @@
             android:layout_gravity="center_horizontal">
 
             <TextView android:id="@+id/errorPass"
-                android:layout_width="260dp"
+                android:layout_width="234dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Contraseña inválida"
                 android:textColorHint="#fffbfffb"
-                android:layout_marginBottom="10dp"
                 android:visibility="invisible" />
 
         </LinearLayout>
