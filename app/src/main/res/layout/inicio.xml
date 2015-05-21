@@ -69,6 +69,31 @@
                 android:inputType="textPassword" />
         </LinearLayout>
 
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView android:id="@+id/errorNick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña inválida"
+                android:textColorHint="#fffbfffb"
+                android:visibility="invisible"
+                android:layout_marginLeft="1dp"
+                android:textAlignment="viewStart" />
+
+            <TextView android:id="@+id/errorPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de usuario no encontrado"
+                android:textColorHint="#fffbfffb"
+                android:visibility="invisible"
+                android:layout_marginLeft="1dp"
+                android:textAlignment="viewStart" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="260dp"

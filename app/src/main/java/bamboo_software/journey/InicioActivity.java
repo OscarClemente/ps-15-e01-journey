@@ -97,6 +97,18 @@ public class InicioActivity extends Activity {
                     startActivityForResult(i, ACTIVITY_CLIENTE);
                 }
             }
+            else {
+                TextView pwd = (TextView) InicioActivity.this.findViewById(R.id.errorPass);
+                pwd.setVisibility(View.INVISIBLE);
+                TextView user = (TextView) InicioActivity.this.findViewById(R.id.errorNick);
+                user.setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            TextView user = (TextView) InicioActivity.this.findViewById(R.id.errorNick);
+            user.setVisibility(View.INVISIBLE);
+            TextView pwd = (TextView) InicioActivity.this.findViewById(R.id.errorPass);
+            pwd.setVisibility(View.VISIBLE);
         }
         if (usuario != null && !usuario.isClosed()){
             usuario.close();
