@@ -12,10 +12,12 @@ import android.database.sqlite.SQLiteDatabase;
 public class AdaptadorCompras {
 
     public static final String KEY_ID = "_id";
+    public static final String KEY_ID_COMPRA = "id_compra";
     public static final String KEY_NOMBRE = "nombre";
     public static final String KEY_CORREO = "correo";
     public static final String KEY_FECHA = "fecha";
     public static final String KEY_PERSONAS = "personas";
+
 
 
     private DatabaseHelper mDbHelper;
@@ -86,13 +88,12 @@ public class AdaptadorCompras {
     /**
      * Borrar la compra de la id y correo dados
      *
-     * @param id id del usuario
+     * @param id id de la compra
      * @return true si se ha borrado, false de otra manera
      */
-    public boolean borrarCompra(long id, String correo) {
+    public boolean borrarCompra(long id) {
         try {
-            return mDb.delete(DATABASE_TABLE, KEY_ID + "=" + id + "AND" +
-                    KEY_CORREO + "=" + correo, null) > 0;
+            return mDb.delete(DATABASE_TABLE,  KEY_ID_COMPRA + "=" + id , null) > 0;
         } catch (Throwable e) {
             return false;
         }
@@ -118,7 +119,7 @@ public class AdaptadorCompras {
      */
     public Cursor listarCompras() {
 
-        return mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_ID_COMPRA, KEY_NOMBRE, KEY_CORREO,
                 KEY_FECHA, KEY_PERSONAS}, null, null, null, null, KEY_ID);
     }
 
@@ -133,7 +134,7 @@ public class AdaptadorCompras {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_ID_COMPRA, KEY_NOMBRE, KEY_CORREO,
                                 KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "='" + correo + "'",
                         null, null, null, null, null);
         if (mCursor != null) {
@@ -146,17 +147,15 @@ public class AdaptadorCompras {
     /**
      * Devuelve un Cursor colocado en la compra que coincide con la id y correo dados
      *
-     * @param correo correo del usuario de la compra a recuperar
      * @return Cursor colocado en la compra deseada si esta
      * @throws SQLException si no se puede encontrar
      */
-    public Cursor listarCompra(String correo, long id) throws SQLException {
+    public Cursor listarCompra(long id) throws SQLException {
 
         Cursor mCursor =
 
-                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NOMBRE, KEY_CORREO,
-                                KEY_FECHA, KEY_PERSONAS}, KEY_CORREO + "='" + correo + "' AND " +
-                                KEY_ID + "=" + id,
+                mDb.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_ID_COMPRA, KEY_NOMBRE, KEY_CORREO,
+                                KEY_FECHA, KEY_PERSONAS}, KEY_ID_COMPRA + "=" + id,
                         null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
