@@ -40,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "AdaptadorBD";
     private static final String DATABASE_NAME = "journey";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

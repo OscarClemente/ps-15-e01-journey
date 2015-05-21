@@ -83,6 +83,7 @@ public class Mail {
             context = ctx;
         }
 
+        /*
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -93,9 +94,11 @@ public class Mail {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            progressDialog.dismiss();
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
         }
-
+        */
         @Override
         protected Void doInBackground(Message... messages) {
             try {

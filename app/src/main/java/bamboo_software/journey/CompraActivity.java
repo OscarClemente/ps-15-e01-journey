@@ -63,7 +63,7 @@ public class CompraActivity extends ActionBarActivity {
 
             /*Create an array to specify the fields we want to display in the
               list ( Id, correo, fecha y personas)*/
-            String[] from = new String[]{AdaptadorCompras.KEY_ID,AdaptadorCompras.KEY_NOMBRE,AdaptadorCompras.KEY_FECHA,
+            String[] from = new String[]{AdaptadorCompras.KEY_ID_COMPRA,AdaptadorCompras.KEY_NOMBRE,AdaptadorCompras.KEY_FECHA,
                     AdaptadorCompras.KEY_PERSONAS};
 
             // and an array of the fields we want to bind those fields to (in this case just text1)
@@ -127,7 +127,7 @@ public class CompraActivity extends ActionBarActivity {
                 id = Long.parseLong(selectedName);
 
                 /* Se obtiene la compra de la base de datos */
-                Cursor crs = adCompras.listarCompra(getUsuario(), id);
+                Cursor crs = adCompras.listarCompra(id);
                 crs.moveToFirst();
                 String titulo = crs.getString(crs.getColumnIndex("nombre"));
                 int personas = Integer.parseInt(crs.getString(crs.getColumnIndex("personas")));
