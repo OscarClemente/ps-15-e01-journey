@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Clase que se encarga de administrar los datos indroducidos por el usuario,
@@ -129,7 +130,106 @@ public class RegistroActivity extends ActionBarActivity {
             long resultado = dbHelper.crearUsuario(correo, nick, nombre, direccion, pass, telefono);
             registrado = true;
         }
-
+        else {
+            TextView userCorreo = (TextView) RegistroActivity.this.findViewById(R.id.correoError);
+            TextView userNick = (TextView) RegistroActivity.this.findViewById(R.id.nickError);
+            TextView mail = (TextView) RegistroActivity.this.findViewById(R.id.correoError);
+            TextView user = (TextView) RegistroActivity.this.findViewById(R.id.nickError);
+            TextView name = (TextView) RegistroActivity.this.findViewById(R.id.nombreError);
+            TextView addr = (TextView) RegistroActivity.this.findViewById(R.id.direccionError);
+            TextView pwd = (TextView) RegistroActivity.this.findViewById(R.id.passError);
+            TextView tlf = (TextView) RegistroActivity.this.findViewById(R.id.telefonoError);
+            if (usuarioCorreo == null) {
+                userCorreo.setVisibility(View.VISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(usuarioNick == null) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.VISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(correo.equals("")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.VISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(correo.contains("@")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.VISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(nick.equals("")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.VISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(nombre.equals("")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.VISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(direccion.equals("")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.VISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(pass.equals("")) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.VISIBLE);
+                tlf.setVisibility(View.INVISIBLE);
+            }
+            else if(telefono == -1) {
+                userCorreo.setVisibility(View.INVISIBLE);
+                userNick.setVisibility(View.INVISIBLE);
+                mail.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                addr.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.INVISIBLE);
+                tlf.setVisibility(View.VISIBLE);
+            }
+        }
         dbHelper.close();
         return registrado;
     }
