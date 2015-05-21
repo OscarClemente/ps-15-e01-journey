@@ -56,6 +56,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
 
+            <TextView android:id="@+id/errorNick"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nombre de usuario no encontrado"
+                android:textColorHint="#fffbfffb"
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
             <EditText android:id="@+id/pass"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
@@ -70,27 +86,18 @@
         </LinearLayout>
 
         <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:weightSum="1">
-
-            <TextView android:id="@+id/errorNick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña inválida"
-                android:textColorHint="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginLeft="1dp"
-                android:textAlignment="viewStart" />
+            android:layout_gravity="center_horizontal">
 
             <TextView android:id="@+id/errorPass"
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de usuario no encontrado"
+                android:layout_weight="1"
+                android:hint="Contraseña inválida"
                 android:textColorHint="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginLeft="1dp"
-                android:textAlignment="viewStart" />
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible" />
 
         </LinearLayout>
 

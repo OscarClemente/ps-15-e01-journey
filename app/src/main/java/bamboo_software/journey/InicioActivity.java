@@ -99,16 +99,16 @@ public class InicioActivity extends Activity {
             }
             else {
                 TextView pwd = (TextView) InicioActivity.this.findViewById(R.id.errorPass);
-                pwd.setVisibility(View.INVISIBLE);
+                pwd.setVisibility(View.VISIBLE);
                 TextView user = (TextView) InicioActivity.this.findViewById(R.id.errorNick);
-                user.setVisibility(View.VISIBLE);
+                user.setVisibility(View.INVISIBLE);
             }
         }
         else {
             TextView user = (TextView) InicioActivity.this.findViewById(R.id.errorNick);
-            user.setVisibility(View.INVISIBLE);
+            user.setVisibility(View.VISIBLE);
             TextView pwd = (TextView) InicioActivity.this.findViewById(R.id.errorPass);
-            pwd.setVisibility(View.VISIBLE);
+            pwd.setVisibility(View.INVISIBLE);
         }
         if (usuario != null && !usuario.isClosed()){
             usuario.close();
