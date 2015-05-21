@@ -5,176 +5,184 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="491dp"
-        android:id="@+id/scrollView2" >
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <EditText
-                android:id="@+id/correo"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Correo"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="35dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp" />
-
-            <TextView android:id="@+id/correoError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Correo inválido"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
-
-            <EditText android:id="@+id/nick"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Nick"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp" />
-
-            <TextView android:id="@+id/nickError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Nick inválido"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
-
-            <EditText android:id="@+id/pass"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Contraseña"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp" />
-
-            <TextView android:id="@+id/passError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña inválida"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
-
-            <EditText android:id="@+id/nombre"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Nombre"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp" />
-
-            <TextView android:id="@+id/nombreError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Nombre de usuario inválido"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />z
-
-            <EditText android:id="@+id/direccion"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Dirección"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp" />
-
-            <TextView android:id="@+id/direccionError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Dirección inválida"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
-
-            <EditText android:id="@+id/telefono"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Teléfono"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#ff000000"
-                android:layout_marginBottom="15dp"
-                android:inputType="phone" />
-
-            <TextView android:id="@+id/telefonoError"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Telefóno inválido"
-                android:textColorHint="@color/grisOscuroHint"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textColor="#fffbfffb"
-                android:visibility="invisible"
-                android:layout_marginBottom="15dp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:weightSum="1">
 
-        <Button android:id="@+id/confirmar"
-            android:layout_marginTop="25dp"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="@color/journeyred"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:text="CONFIRMAR"
-            android:layout_gravity="bottom|right" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="461dp"
+            android:id="@+id/scrollView2"
+            android:layout_weight="0.92">
 
-        <TextView android:id="@+id/usuarioError"
-            android:layout_width="323dp"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/correo"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="35dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView android:id="@+id/correoError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo inválido"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />
+
+                <EditText android:id="@+id/nick"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nick"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView android:id="@+id/nickError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nick inválido"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />
+
+                <EditText android:id="@+id/pass"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Contraseña"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView android:id="@+id/passError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña inválida"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />
+
+                <EditText android:id="@+id/nombre"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView android:id="@+id/nombreError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre de usuario inválido"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />z
+
+                <EditText android:id="@+id/direccion"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView android:id="@+id/direccionError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección inválida"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />
+
+                <EditText android:id="@+id/telefono"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Teléfono"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff000000"
+                    android:layout_marginBottom="15dp"
+                    android:inputType="phone" />
+
+                <TextView android:id="@+id/telefonoError"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Telefóno inválido"
+                    android:textColorHint="@color/grisOscuroHint"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#fffbfffb"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="15dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="El correo o nick ya existe"
-            android:textColorHint="@color/grisOscuroHint"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:textColor="#fffbfffb"
-            android:visibility="invisible"
-            android:layout_marginBottom="15dp"
-            android:layout_gravity="right|top" />
-    </FrameLayout>
+            android:layout_marginRight="10dp"
+            android:layout_gravity="bottom">
+
+            <Button android:id="@+id/confirmar"
+                android:layout_marginTop="25dp"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="@color/journeyred"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="CONFIRMAR"
+                android:layout_gravity="right" />
+
+            <TextView android:id="@+id/usuarioError"
+                android:layout_width="323dp"
+                android:layout_height="wrap_content"
+                android:hint="El correo o nick ya existe"
+                android:textColorHint="@color/grisOscuroHint"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:textColor="#fffbfffb"
+                android:visibility="invisible"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="right|top" />
+        </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>
