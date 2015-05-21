@@ -169,7 +169,7 @@ public class RegistroActivity extends ActionBarActivity {
                 pwd.setVisibility(View.INVISIBLE);
                 tlf.setVisibility(View.INVISIBLE);
             }
-            else if(correo.contains("@")) {
+            else if(!correo.contains("@")) {
                 userCorreo.setVisibility(View.INVISIBLE);
                 userNick.setVisibility(View.INVISIBLE);
                 mail.setVisibility(View.VISIBLE);
