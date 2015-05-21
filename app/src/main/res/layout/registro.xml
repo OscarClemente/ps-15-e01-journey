@@ -83,12 +83,13 @@
 
         <Button android:id="@+id/confirmar"
             android:layout_marginTop="25dp"
-            android:text="CONFIRMAR"
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/journeyred"
-            android:textSize="20dp"
             style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/journeyred"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="CONFIRMAR"
             android:layout_gravity="bottom|right" />
     </FrameLayout>
 
