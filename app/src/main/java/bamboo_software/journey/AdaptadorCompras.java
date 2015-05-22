@@ -51,6 +51,10 @@ public class AdaptadorCompras {
         return this;
     }
 
+
+    /**
+     * Cierra el acceso a la base de datos
+     */
     public void close() {
         mDbHelper.close();
     }
