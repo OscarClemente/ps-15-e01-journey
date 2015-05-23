@@ -75,7 +75,6 @@ public class AdaptadorCompras {
             if (correo.equals("")) {
                 return -1;
             }
-
             ContentValues valoresIniciales = new ContentValues();
             valoresIniciales.put(KEY_ID, id);
             valoresIniciales.put(KEY_NOMBRE, nombre);
