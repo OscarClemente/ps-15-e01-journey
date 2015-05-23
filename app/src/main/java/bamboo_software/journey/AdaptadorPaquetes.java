@@ -71,10 +71,12 @@ public class AdaptadorPaquetes {
      * de otra manera se devuelve -1 para indicar un fallo.
      *
      * @param nombre       el nombre del paquete
+     * @param destino      el destino del paquete
      * @param precio       el precio del paquete
      * @param duracion     la duracion del paquete
      * @param calificacion la calificacion del paquete
      * @param descripcion  la descripcion del paquete
+     * @param imagen       el path de la imagen asociada al paquete
      * @return rowId o -1 si falla
      */
     public long crearPaquete(String nombre, String destino, int precio, int duracion,
@@ -83,7 +85,6 @@ public class AdaptadorPaquetes {
             if (nombre.equals("")) {
                 return -1;
             }
-
             ContentValues valoresIniciales = new ContentValues();
             valoresIniciales.put(KEY_NOMBRE, nombre);
             valoresIniciales.put(KEY_DESTINO, destino);

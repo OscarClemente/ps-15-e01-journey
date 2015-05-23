@@ -55,14 +55,16 @@ public class AdaptadorUsuarios {
 
 
     /**
-     * Crea un nuevo usuario usando el correo, nick, pass, y telefono
+     * Crea un nuevo usuario usando el correo, nick, nombre, direccion, pass, y telefono
      * proporcionados. Si el usuario se crea con exito devuelve la rowId de ese usuario,
      * de otra manera se devuelve -1 para indicar un fallo.
      *
      * @param correo       el correo del usuario
-     * @param nick       el nick del usuario
-     * @param pass     la pass del usuario
-     * @param telefono el telefono del usuario
+     * @param nick         el nick del usuario
+     * @param nombre       el nombre del usuario
+     * @param direccion    la direccion del usuario
+     * @param pass         la pass del usuario
+     * @param telefono     el telefono del usuario
      * @return rowId o -1 si falla
      */
     public long crearUsuario(String correo, String nick, String nombre, String direccion,
@@ -71,7 +73,6 @@ public class AdaptadorUsuarios {
             if (correo.equals("")) {
                 return -1;
             }
-
             ContentValues valoresIniciales = new ContentValues();
             valoresIniciales.put(KEY_CORREO, correo);
             valoresIniciales.put(KEY_NICK, nick);
