@@ -126,7 +126,7 @@
         android:textColor="@color/grisOscuroHint" />
 
     <Button
-        android:text="COMPRAR"
+        android:text="CONFIRMAR"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         style="?android:attr/borderlessButtonStyle"
