@@ -114,5 +114,4 @@ public class ApplicationTest extends
                 "PaqueteActivity");
         solo.goBackToActivity("InicioActivity");
     }
-
 }

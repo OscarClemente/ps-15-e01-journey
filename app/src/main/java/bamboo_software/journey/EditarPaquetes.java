@@ -167,11 +167,21 @@ public class EditarPaquetes extends Activity {
     private void guardarPaquete() {
         String nombre = mNombre.getText().toString();
         String Sprecio = mPrecioText.getText().toString();
-        int precio = parseInt(Sprecio);
+        int precio = 0;
+        if (!mPrecioText.getText().toString().equals("")) {
+            precio = parseInt(Sprecio);
+        }
         String Sduracion = mDuracionText.getText().toString();
-        int duracion = parseInt(Sduracion);
+        int duracion = 0;
+        System.out.println(mDuracionText.getText().toString());
+        if (!mDuracionText.getText().toString().equals("")) {
+            duracion = parseInt(Sduracion);
+        }
         String Scalificacion = mCalificacionText.getText().toString();
-        int calificacion = parseInt(Scalificacion);
+        int calificacion = 0;
+        if (!mCalificacionText.getText().toString().equals("")) {
+            calificacion = parseInt(Scalificacion);
+        }
         String descripcion = mDescripcion.getText().toString();
         String destino = mDestino.getText().toString();
         //String Simagen = mCalificacionText.getText().toString();
@@ -182,10 +192,12 @@ public class EditarPaquetes extends Activity {
         System.out.println("GUARDANDO EN BD IMAGE PATH:" + imagen);
 
         if (mRowId == null) {
-                long id = paqueteDbHelper.crearPaquete(nombre,destino,precio,duracion,calificacion,descripcion,imagen);
+            //if (nombre!=null && destino!=null && Sprecio!=null && Sduracion!=null && Scalificacion!=null) {
+                long id = paqueteDbHelper.crearPaquete(nombre, destino, precio, duracion, calificacion, descripcion, imagen);
                 if (id > 0) {
                     mRowId = id;
-                 }
+                }
+            //}
         }
         else {
                 paqueteDbHelper.actualizarPaquete(mRowId,nombre,destino,precio,duracion,calificacion,descripcion,imagen);
