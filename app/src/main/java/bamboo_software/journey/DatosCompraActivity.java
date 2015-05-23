@@ -60,8 +60,13 @@ public class DatosCompraActivity extends ActionBarActivity {
                 /* Se obtiene el nombre del paquete y el numero de personas */
                 Cursor crs = paqueteDbHelper.listarPaquete(clave);
                 crs.moveToFirst();
-                int personas = Integer.parseInt(mPersonas.getText().toString());
-
+                String pers = mPersonas.getText().toString();
+                int personas;
+                if(!pers.equals("")) {
+                    personas = Integer.parseInt(pers);
+                } else {
+                    personas = 0;
+                }
                 /* Se obtiene la fecha actual */
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");

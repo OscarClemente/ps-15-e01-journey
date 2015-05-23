@@ -3,139 +3,150 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:paddingTop="20dp"
     android:paddingBottom="10dp">
 
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1">
 
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ID"
-            android:textSize="20dp"
-            android:paddingLeft="4dp"
-            android:textColor="@color/grisOscuroHint" />
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="461dp"
+            android:id="@+id/scrollView3"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_weight="0.92">
 
-        <EditText
-            android:id="@+id/ID"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ID"
+                        android:textSize="20dp"
+                        android:paddingLeft="4dp"
+                        android:textColor="@color/grisOscuroHint" />
+
+                    <EditText
+                        android:id="@+id/ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:textColor="#ff000000" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/nombre"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Nombre"
+                    android:textColor="@color/grisOscuroHint" />
+
+                <EditText
+                    android:id="@+id/destino"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:hint="Destino"
+                    android:textColor="@color/grisOscuroHint" />
+
+                <EditText
+                    android:id="@+id/precio"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    android:hint="Precio"
+                    android:textColor="@color/grisOscuroHint" />
+
+                <EditText
+                    android:id="@+id/duracion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    android:hint="Duración"
+                    android:textColor="@color/grisOscuroHint" />
+
+                <EditText
+                    android:id="@+id/calificacion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    android:hint="Calificación"
+                    android:textColor="@color/grisOscuroHint" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <EditText
+                        android:id="@+id/textImagen"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:hint="Imagen"
+                        android:textColor="@color/grisOscuroHint"
+                        android:layout_marginTop="5dp" />
+
+                    <Button
+                        android:id="@+id/imagen"
+                        android:text=" Seleccionar "
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/whiteHint"
+                        android:background="@color/journeyred"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="129dp"
+                    android:scrollbars="vertical"
+                    android:hint="Descripción del paquete..."
+                    android:textColor="@color/grisOscuroHint" />
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:textColor="#ff000000" />
+            android:layout_gravity="bottom">
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:text="CONFIRMAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/journeyred"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:id="@+id/confirm"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
     </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Nombre"
-            android:textColor="@color/grisOscuroHint" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/destino"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Destino"
-            android:textColor="@color/grisOscuroHint" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/precio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_weight="1"
-            android:hint="Precio"
-            android:textColor="@color/grisOscuroHint" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/duracion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_weight="1"
-            android:hint="Duración"
-            android:textColor="@color/grisOscuroHint" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/calificacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_weight="1"
-            android:hint="Calificación"
-            android:textColor="@color/grisOscuroHint" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText android:id="@+id/textImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Imagen"
-            android:textColor="@color/grisOscuroHint"
-            android:layout_marginTop="5dp" />
-
-        <Button android:id="@+id/imagen"
-            android:text=" Seleccionar "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/whiteHint"
-            android:background="@color/journeyred"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp" />
-
-    </LinearLayout>
-
-    <EditText android:id="@+id/descripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        android:hint="Descripción del paquete..."
-        android:textColor="@color/grisOscuroHint" />
-
-    <Button
-        android:text="CONFIRMAR"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        style="?android:attr/borderlessButtonStyle"
-        android:textColor="@color/journeyred"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:id="@+id/confirm"
-        android:layout_gravity="right" />
-
 
 
 </LinearLayout>
